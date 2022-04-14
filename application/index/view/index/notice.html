@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <table class="layui-table layui-form">
+                                <thead>
+									<tr>
+										<th style="text-align:center;">公告標題</th>
+										<th style="text-align:center;">公告內容</th>
+									</tr>
+                                </thead>
+                                <tbody>
+                                    {volist name="notice" id="vo"}
+									<tr>
+										<td style="text-align:center;">{$vo.title}</td>
+										<td style="text-align:center;">{$vo.content}</td>
+									</tr>
+									{/volist}
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+      layui.use(['laydate','form'], function(){
+        var laydate = layui.laydate;
+        var  form = layui.form;
+
+
+        // 监听全选
+        form.on('checkbox(checkall)', function(data){
+
+          if(data.elem.checked){
+            $('tbody input').prop('checked',true);
+          }else{
+            $('tbody input').prop('checked',false);
+          }
+          form.render('checkbox');
+        }); 
+        
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+          ,type: 'datetime'
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+          ,type: 'datetime'
+        });
+
+
+      });
+
+    </script>
+</html>

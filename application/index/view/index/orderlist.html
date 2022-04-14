@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+    </head>
+<style>
+    .x-nav {
+        padding: 0 20px;
+        position: relative;
+        z-index: 99;
+        border-bottom: 1px solid #e5e5e5;
+        line-height: 39px;
+        height: 39px;
+        overflow: hidden;
+        background: #eee;
+    }
+    .search {
+        height: 30px;
+        line-height: 30px;
+        padding: 0 10px;
+        width: 100%;
+        margin-top: 10px;
+        max-width:400px;
+    }
+.layui-table tbody tr:hover{
+	    background-color: transparent;
+	}
+.layui-table tbody:hover{
+	background-color:#eee;
+	
+	}
+.layui-table td{
+	border-color:transparent;
+	border-width: 0px;}
+.layui-table tbody, .layui-table tfoot{
+	border-bottom: 2px solid #eee;
+	}
+</style>
+    <body>
+        <div class="x-nav">
+          <span class="layui-breadcrumb">
+            <a href="">管理</a>
+            <a>
+              <cite>會員输赢記錄</cite></a>
+          </span>
+          <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body ">
+                            <form class="layui-form layui-col-space5">
+                            	 <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" placeholder="開始日" name="start" id="start" value="{$start}">
+                                 </div>
+                                 <div class="layui-input-inline layui-show-xs-block">
+                                    <input class="layui-input" placeholder="截至日" name="end" id="end"  value="{$end}">
+                                 </div>
+                                 <div class="layui-input-inline layui-show-xs-block">
+                                    <select name="gametype">
+                                        <option value="">貨幣類型</option>
+                                        <option value="BTCUSDT" {if condition="$gametype eq 'BTCUSDT'"}selected="selected"{/if}>比特幣/美金</option>
+                                  		<option value="ETHUSDT" {if condition="$gametype eq 'ETHUSDT'"}selected="selected"{/if}>以太幣/美金</option>
+                                        <option value="DOTUSDT" {if condition="$gametype eq 'DOTUSDT'"}selected="selected"{/if}>波卡幣/美金</option>
+                                  		<option value="XRPUSDT" {if condition="$gametype eq 'XRPUSDT'"}selected="selected"{/if}>瑞波幣/美金</option>
+                                        <option value="LTCUSDT" {if condition="$gametype eq 'LTCUSDT'"}selected="selected"{/if}>萊特幣/美金</option>
+                                  		<option value="XMRUSDT" {if condition="$gametype eq 'XMRUSDT'"}selected="selected"{/if}>門羅幣/美金</option>
+                                  		<option value="DASHUSDT" {if condition="$gametype eq 'DASHUSDT'"}selected="selected"{/if}>達世幣/美金</option>
+                                  		<option value="QTUMUSDT" {if condition="$gametype eq 'QTUMUSDT'"}selected="selected"{/if}>量子鏈幣/美金</option>
+                                  		<option value="USDGBP" {if condition="$gametype eq 'USDGBP'"}selected="selected"{/if}>美金/英鎊</option>
+                                  		<option value="USDEUR" {if condition="$gametype eq 'USDEUR'"}selected="selected"{/if}>美金/歐元</option>
+                                  		<option value="USDCAD" {if condition="$gametype eq 'USDCAD'"}selected="selected"{/if}>美金/加元</option>
+                                  		<option value="USDAUD" {if condition="$gametype eq 'USDAUD'"}selected="selected"{/if}>美金/澳元</option>
+                                       </select>
+                                 </div>
+                                <div  class="layui-inline layui-show-xs-block">
+                                    <button class="layui-btn search"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                          <table class="layui-table layui-form">
+                        <thead style="text-align:center;">
+                                  <tr style="background: antiquewhite;">
+                                		<td colspan="2" style="color:tomato;text-align:center;">總交易量</td>
+                                		<td  style="text-align:center;font-weight:700;">${$c_bet_money}</td>
+                                	
+                                	</tr>
+                                     <tr style="    background: azure;">
+                                		<td colspan="2" style="color:cadetblue;text-align:center;">總獲利</td>
+                                		<td  style="text-align:center; font-weight:700;"> ${$c_is_win}</td>
+                                	
+                                	</tr>
+                                </thead>
+                               
+                                <thead style="text-align:center; display:none;">
+                                  <tr>
+                                  	<th style="text-align:center;">買入時間</th>
+                                  	<th style="text-align:center;">類型</th>
+                                  	<th style="text-align:center;">買入金額</th>
+                                    <th style="text-align:center;">玩法</th>
+                                    <th style="text-align:center;">牌價</th>
+                                    <th style="text-align:center;">輸贏結果</th>
+                                    
+                                    
+                                    <th style="text-align:center; display:none;">ID</th>
+                                    <th style="text-align:center;display:none;">帳號</th>
+                                    <th style="display:none; text-align:center;">單號</th>
+                                    <th style="text-align:center;display:none;">期數</th>
+                                    <th style="text-align:center; display:none;">派彩金額</th>
+                                    <th style="text-align:center; display:none;">結算狀態</th>
+                                    
+                                    
+                                  </tr>
+                                </thead>
+                               
+                                {volist name="list" id="vo"}
+                                <tbody>
+                                
+                                  <tr>
+                                  <td style="text-align:center;">{$vo.bet_time}</td>
+                                  <td style="text-align:center;">{$vo.rtype_str}</td>
+                                  <td style="text-align:center;">成本 : {$vo.bet_money}</td>
+                                  </tr>
+                                  <tr>
+                                   <td style="text-align:center;">交易 : 
+                                        {switch $vo.quick_type}
+                                            {case G}漲{/case}
+                                            {case D}跌{/case}
+                                            {case J}單{/case}
+                                            {case O}雙{/case}
+                                            {case FZB}反指標{/case}
+                                        {/switch}
+                                        {if $vo.number != '0'}
+                                        /{$vo.number}
+                                        {/if}
+                                        </td>
+                                      <td style="text-align:center;">牌價 : {$vo.result}</td> 
+                                       <td {if condition="$vo.win gt 0"} style="text-align:center; color:green;" {else /} style="text-align:center; color:red;" {/if}>收益 : {$vo.win - $vo.bet_money}</td>
+                                       
+                                  
+                                    <td style="text-align:center; display:none;">{$vo.id}</td>
+                                    <td style="text-align:center;display:none;">{$vo.name}</td>
+                                    <td style="display:none; text-align:center;">{$vo.order_sub_num}</td>
+                                    <td style="text-align:center;display:none;">{$vo.lottery_number}</td>
+                                    <td style="text-align:center; display:none;">{$vo.win}</td>
+                                    <td style="text-align:center; display:none;">
+                                    	{if condition="$vo.status eq '0'"}
+                                    	<b style="color:red;">未結</b>
+                                    	{elseif condition="$vo.status eq '1'"/}
+                                    	<b style="color:green;">已結</b>
+                                    	{else /}
+                                    	<b style="color:red;">重结</b>
+                                    	{/if}
+                                    </td>
+                                  
+                                  </tr>
+                                 
+                                </tbody>
+                                 {/volist}
+                                <tfoot style=" display:none">
+                                	<tr>
+                                	    <td style="text-align:center;"><b style="color:red;">總合計:</b></td>
+                                		<td  style="color:red;text-align:center;text-align:right;">{$c_bet_money}</td>
+                                		<td style="text-align:center;">{$c_is_win}</td>
+                                	
+                                	</tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="layui-card-body">
+                          	{$page|raw}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+      layui.use(['laydate','form'], function(){
+        var laydate = layui.laydate;
+        var  form = layui.form;
+
+
+        // 监听全选
+        form.on('checkbox(checkall)', function(data){
+
+          if(data.elem.checked){
+            $('tbody input').prop('checked',true);
+          }else{
+            $('tbody input').prop('checked',false);
+          }
+          form.render('checkbox');
+        }); 
+        
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+          ,type: 'datetime'
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+          ,type: 'datetime'
+        });
+
+
+      });
+
+    </script>
+</html>

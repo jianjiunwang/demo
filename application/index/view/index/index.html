@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta version="10">
+<title>binary</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+
+<link href="upload/1574087439a0a1ee6b522055df3b9491aaa9a38c60" rel="icon" type="image/x-icon">
+
+<link rel="stylesheet" href="//cdn.staticfile.org/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/5.9.0/css/all.min.css">
+<link rel="stylesheet" href="//cdn.staticfile.org/sweetalert/1.1.3/sweetalert.min.css">
+<link rel="stylesheet" href="//cdn.staticfile.org/jqueryui/1.12.1/themes/base/jquery-ui.css">
+<script src="//cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdn.staticfile.org/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script src="//cdn.staticfile.org/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="//cdn.staticfile.org/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="//cdn.staticfile.org/sweetalert/1.1.3/sweetalert.min.js"></script>
+<script src="//cdn.staticfile.org/moment.js/2.24.0/moment.min.js"></script>
+<script src="//cdn.staticfile.org/Chart.js/2.8.0/Chart.min.js"></script>
+<script src="//cdn.staticfile.org/hammer.js/2.0.8/hammer.min.js"></script>
+<script src="//cdn.staticfile.org/chartjs-plugin-zoom/0.6.6/chartjs-plugin-zoom.min.js"></script>
+<script src="/js/bopt/chartjs-plugin-streaming.js"></script>
+<script src="//cdn.staticfile.org/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
+
+<link rel="stylesheet" href="/css/font.scss?c218dee82159d43a3f108c4bcbf60bed">
+<link rel="stylesheet" href="/css/binary6.css?c218dee82159d43a3f108c4bcbf60bed">
+<script src="/js/_common_2.js?c218dee82159d43a3f108c4bcbf60bed01"></script>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<style>
+.cover::before{
+background-image: url('/img/_common/cross.png?c218dee82159d43a3f108c4bcbf60bed');
+}
+.cover.active {
+    opacity: 1;
+    visibility: hidden!important;
+    pointer-events: painted;
+}
+</style>
+</head>
+
+<body>
+<input id="auth" type="hidden" value="ws://167.179.93.49:2354?uid={$uid}">
+<input id="ws" data-game="Bopt{$gameid}" data-path="/views/cache/Bopt{$gameid}_101.html" hidden>
+<textarea id="ws-hint" hidden>{"111":"\u9ad8","112":"\u4f4e","113":"\u55ae","114":"\u96d9","124":"\u6f32","125":"\u8dcc","168":"\u53cd"}</textarea>
+<div id="page">
+<div class="body-block">
+<header class="">
+<div class="top-header">
+<div class="logo">
+<img src="/img/binary6/logo.png" alt="binary">
+</div>
+<div class="info">
+<div class="name">
+{$username}
+</div>
+<div class="wallet">
+資金：<i class="fas fa-dollar-sign"></i>
+<span name="wallet">--</span>
+</div>
+</div>
+<div class="lang-row">
+<button class="dropdown-toggle nav-footer-link" type="button" data-toggle="dropdown">
+<span class="lang-img zh_TW"></span>
+</button>
+<div class="dropdown-menu">
+
+<a class="dropdown-item" href="?lang=zh_TW"><span class="lang-img zh_TW"></span>繁體中文</a>
+
+</div>
+</div>
+</div>
+<div class="header-link">
+<div class="top-title zh_TW">
+<span class="zh_TW">名稱</span>
+<span class="zh_TW">現價</span>
+<span class="zh_CN">名称</span>
+<span class="zh_CN">现价</span>
+<span class="en_US">name</span>
+<span class="en_US">Current price</span>
+<span class="vi_VN">Tên</span>
+<span class="vi_VN">Giá hiện tại</span>
+</div>
+<div class="link-block">
+{foreach $type as $key=>$vo } 
+	<a href="/bopt{$vo.typeid}" class="nav-list" data-name="{$key}">
+<div class="nav-name">
+{$vo.title}
+</div>
+<div class="view-item-amplitude" data-amplitude>
+<span class="gw view-item-data">--</span>
+</div>
+</a>
+{/foreach}
+
+
+
+</div>
+<div class="bottom-time">
+<div class="game-time">目前時間：<span></span></div>
+</div>
+</div>
+</header>
+<main class="">
+
+<input id="coin1" class="coin-control" type="hidden" value="10" hidden>
+
+<input id="coin2" class="coin-control" type="hidden" value="50" hidden>
+
+<input id="coin3" class="coin-control" type="hidden" value="100" hidden>
+
+<input id="coin4" class="coin-control" type="hidden" value="1000" hidden>
+
+<input id="coin5" class="coin-control" type="hidden" value="10000" hidden>
+
+<input id="coin6" class="coin-control" type="hidden" value="50000" hidden>
+
+<input id="coin7" class="coin-control" type="hidden" value="100000" hidden>
+
+<script src="/js/bopt/init.js?c218dee82159d43a3f108c4bcbf60bed14"></script>
+<script src="/js/_canvas/bopt.js?c218dee843a3f108c4bcbf60bed19"></script>
+<textarea id="chart-color" hidden>
+{
+"labelFC":"rgba(0, 0, 0, 1)",
+"sLabelBC":"rgba(255,253,148,0.4)",
+"startLabelBC":"rgba(255, 253, 148, 1)",
+"startLabelBCM":"rgba(255, 253, 148, 1)",
+"startDash":[0, 0],
+"pLabelBC":"rgba(255,253,148,0.4)",
+"stopLabelBC":"rgba(255, 253, 148, 1)",
+"stopLabelBCM":"rgba(255, 253, 148, 1)",
+"stopDash":[0, 0],
+"boxBC":"rgba(255, 253, 148, 0.2)",
+"gameBC":"rgba(254, 183, 57, 0.8)",
+"gameLabelBC":"rgba(254, 183, 57, 0.8)",
+"gameLabelFC":"rgba(16, 21, 27, 0.9)",
+"chartBorder":"rgba(52, 122, 139, 1)",
+"chartColor1":"rgba(52, 122, 139, 0.8)",
+"chartColor2":"rgba(52, 122, 139, 0.2)",
+"xGridLines":"rgba(55, 55, 55, 1)",
+"xGridLinesZero":"rgba(55, 55, 55, 1)",
+"xGridFont":"rgba(255, 255, 255, 1)",
+"yGridLines":"rgba(55, 55, 55, 1)",
+"yGridLinesZero":"rgba(55, 55, 55, 1)",
+"yGridFont":"rgba(255, 255, 255, 1)",
+}
+</textarea>
+<div data-bopt id="inside-page">
+<div class="game-info">
+<div class="name">--</div>
+<div class="info-item" onclick="goto('notice');"><span class="fas fa-exclamation-circle"></span>網站公告</div>
+<div class="info-item change-txt" onclick="goto('orderlist');"><span class="fas fa-history"></span>交易紀錄</div>
+<div class="info-item" onclick="goto('explain');"><span class="fab fa-quora"></span>交易說明</div>
+<div class="info-item"  onclick="logout();"><span class="fab fa-quora"></span>退出</div>
+</div>
+<div class="game-box">
+<canvas id="chart-view"></canvas>
+<button id="resetZoom"><i class="fas fa-angle-double-right fa-1x"></i></button>
+<span class="game-name" unselectable="on"></span>
+<span class="now-data"><b></b><i></i></span>
+</div>
+
+<div class="control-box">
+<form action="bet" method="post" target="_blank">
+<input id="game-1" type="checkbox" value="1" name="205_2_111" hidden>
+<input id="game-2" type="checkbox" value="1" name="205_2_112" hidden>
+<input id="game-3" type="checkbox" value="1" name="205_3_113" hidden>
+<input id="game-4" type="checkbox" value="1" name="205_3_114" hidden>
+<input id="game-5" type="checkbox" value="1" name="205_10_124" hidden>
+<input id="game-6" type="checkbox" value="1" name="205_10_125" hidden>
+<input id="game-7" type="checkbox" value="1" name="205_41_168" hidden>
+<div class="button-row">
+<div class="time-block">
+<div class="game-uid">
+<h6>當前交易期數</h6>
+<input name="draw_uid" id="draw_uid" readonly>
+</div>
+<div class="end-time">
+<h6>最後購買時間</h6>
+<div class="time-box">
+<span id="time">--</span>s
+</div>
+</div>
+</div>
+<div class="button-item">
+<label for="game-1" class="green">高<span class="odds">--</span></label>
+<label for="game-2" class="red">低<span class="odds">--</span></label>
+<label for="game-3" class="basis">單<span class="odds">--</span></label>
+<label for="game-4" class="basis">雙<span class="odds">--</span></label>
+<label for="game-5" hidden>漲<span class="odds">--</span></label>
+<label for="game-6" hidden>跌<span class="odds">--</span></label>
+<label for="game-7" class="outer option-button zh_TW">
+<b class="zh_TW">反指標</b>
+<b class="zh_CN">反指标</b>
+<b class="en_US">反指標</b>
+<span class="odds">--</span></label>
+</div>
+</div>
+<div class="money-rank">
+<div class="rank-box">
+<input type="checkbox" id="add-control" hidden>
+<div class="add-box" hidden>
+<button type="button" class="game-coin" data-add>0</button>
+</div>
+<div class="input-block zh_TW">
+<span class="zh_TW">請輸入投注金額</span>
+<span class="zh_CN">请输入投注金额</span>
+<span class="vi_VN">Vui lòng nhập số tiền đặt cược</span>
+<span class="en_US">Please enter the bet amount</span>
+<label for="add-control" hidden><i class="fas fa-caret-square-up"></i></label>
+<input type="text" name="totalView" autocomplete="off" value="$100">
+</div>
+<input type="text" name="total" autocomplete="off" value="" hidden>
+<input type="hidden" name="game" value="{$game.id}" hidden>
+</div>
+</div>
+<button type="submit">確認</button>
+</form>
+</div>
+<div class="cover">
+<img src="/img/binary/close.png?c218dee82159d43a3f108c4bcbf60bed" alt="close">
+<div class="cover-box">
+<h4>休市中<span>COMING SOON...</span></h4>
+<div class="cover-text">
+<h5>交易時間</h5>
+<p>週一12:00至週五24:00</p>
+</div>
+</div>
+</div>
+</div>
+<script>
+function logout(){
+    var datas={};
+    var locurl = "{:url('index/index/login')}?i=";
+    $.ajax({
+        type:"POST",
+        url:"{:url('index/index/logout')}?i=",
+        data:datas,
+        dataType:"json",
+        success:function(data) {
+            if(data.type == 1){
+                alert(data.data);
+                if(locurl){
+                    window.location.href=locurl;
+                }else{
+                    return true;
+                }
+            }else{
+              alert(data.data);
+            }
+        }
+    });
+}
+    layui.use(['laydate','form'], function(){
+        var laydate = layui.laydate;
+        var  form = layui.form;
+        // 监听全选
+        form.on('checkbox(checkall)', function(data){
+
+          if(data.elem.checked){
+            $('tbody input').prop('checked',true);
+          }else{
+            $('tbody input').prop('checked',false);
+          }
+          form.render('checkbox');
+        }); 
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+        });
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+        });
+      });
+     function goto(url){
+        switch(url){
+            case "orderlist": var title='注單明細';var gourl = "{:url('index/index/orderlist')}?i=";break;
+            case "notice": var title='網站公告';var gourl = "{:url('index/index/notice')}?i=";break;
+            case "explain": var title='交易說明';var gourl = "{:url('index/index/explain')}?i=";break;
+        }
+        layer.open({
+          type: 2,
+          title: title,
+          shadeClose: true,
+          shade: 0.8,
+          area: ['80%', '90%'],
+          maxmin: true,
+          content: gourl
+        }); 
+    }
+
+$(function(){
+var txt1 = 'Bet ID/Time';
+var txt2 = 'Bet Content';
+var txt3 = 'Bet Amount';
+var txt4 = 'Win/Loss';
+var flog = 0;
+var tLang = 'zh_TW';
+switch (tLang){
+case 'zh_TW':
+txt1 = '交易編號/時間';
+txt2 = '交易內容';
+txt3 = '交易金額';
+txt4 = '盈虧';
+flog = 1;
+break;
+case 'zh_CN':
+txt1 = '交易编号/时间';
+txt2 = '交易内容';
+txt3 = '交易金额';
+txt4 = '盈亏';
+flog = 1;
+break;
+default:
+};
+if(flog){
+$('.change-txt').attr('data-lang1', txt1);
+$('.change-txt').attr('data-lang2', txt2);
+$('.change-txt').attr('data-lang3', txt3);
+$('.change-txt').attr('data-lang4', txt4);
+}
+});
+</script><script>
+function _gettext(str){
+var i18n = {
+'Confirm Betting': '確認投注',
+'Confirm': '確認',
+'Cancel': '取消',
+'Bets Accepted': '下注成功',
+'Please login first': '請先登入',
+'Error': '錯誤',
+'Trade Accepted': '交易成功',
+'Time until purchase': '最後購買時間',
+'Time until expiration': '本期結算時間',
+'Final Result': '結算匯率',
+'Log out': '登出',
+};
+
+return i18n[str] || str;
+}
+</script>
+</main>
+</div>
+<!-- Modal -->
+<div class="modal fade game-modal" id="log" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-xl" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h2 class="modal-title"></h2>
+<button type="button" class="fas fa-times" data-dismiss="modal"></button>
+</div>
+<div class="modal-body modal-body-sp">
+<div class="log"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+$(function(){
+var game = $('#ws').attr('data-game').toLowerCase();
+$('a[href*="' + game +'"]').addClass('now');
+$('.game-info .name').text($('.nav-list.now .nav-name').text());
+function getTime(){
+var getNow = new Date();
+var h = ('0' + getNow.getHours()).slice(-2);
+var m = ('0' + getNow.getMinutes()).slice(-2);
+var s = ('0' + getNow.getSeconds()).slice(-2);
+$('.game-time span').text(h + ':' + m + ':' + s);
+}getTime();
+setInterval(function(){getTime();}, 1000);});
+</script>
+
+</body>
+
+</html>

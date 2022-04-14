@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+        <script src="/js/My97DatePicker/WdatePicker.js"></script>
+        <script src="//cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+        <script src="//cdn.staticfile.org/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                //存款
+                $('#rec').on('click', function() {
+                    $("#rec").addClass("checked");
+                    $("#dra").removeClass("checked");
+                    window.location.href = "{:url('index/index/rd_record?s=r')}?i=";
+                });
+
+                //提款
+                $('#dra').on('click', function() {
+                    $("#dra").addClass("checked");
+                    $("#rec").removeClass("checked");
+                    window.location.href = "{:url('index/index/rd_record?s=d')}?i=";
+                });
+
+                //全部
+                $('#all').on('click', function() {
+                    $("#all").addClass("checked");
+                    $("#sing").removeClass("checked");
+                    $("#ss").removeClass("checked");
+                    $("#sf").removeClass("checked");
+                });
+
+                //審核中
+                $('#sing').on('click', function() {
+                    $("#sing").addClass("checked");
+                    $("#all").removeClass("checked");
+                    $("#ss").removeClass("checked");
+                    $("#sf").removeClass("checked");
+                });
+
+                //成功
+                $('#ss').on('click', function() {
+                    $("#ss").addClass("checked");
+                    $("#sing").removeClass("checked");
+                    $("#all").removeClass("checked");
+                    $("#sf").removeClass("checked");
+                });
+
+                //失敗
+                $('#sf').on('click', function() {
+                    $("#sf").addClass("checked");
+                    $("#sing").removeClass("checked");
+                    $("#ss").removeClass("checked");
+                    $("#all").removeClass("checked");
+                });
+    
+            });
+        </script>
+        <style>
+            .checked {
+            background-color: rgb(35, 101, 223);
+            color: white;
+            border-radius:10px;
+        }
+        </style>
+    </head>
+    <style>
+        .checked {
+            background-color: transparent;
+            color: #000;
+            border-radius: 0;
+            border-bottom: 2px solid cadetblue;
+        }
+
+        .f_top_list {
+            margin-bottom: 10px;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 5px;
+        }
+
+        
+        .x-nav {
+            padding: 0 20px;
+            position: relative;
+            z-index: 99;
+            border-bottom: 1px solid #e5e5e5;
+            line-height: 39px;
+            height: 39px;
+            overflow: hidden;
+            background: #eee;
+        }
+  
+    </style>
+    <body>
+        
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <div style="display: block; display: none;">
+                                <span>時間：</span>
+                                <div style="display: contents;">
+                                    <label>開始時間</label>
+                                    <input type="text" id="startTime"
+						onFocus="var endTime=$dp.$('endTime');WdatePicker({onpicked:function(){endTime.focus();},maxDate:'2030-09-22'})"
+						class="form-control" placeholder="點擊選擇日期">
+                                    <label>結束時間</label>
+                                    <input type="text" id="endTime"
+						style="margin-right: 0" class="form-control" placeholder="點擊選擇日期">
+                                    <label tabindex="-1">
+                                        <input type="radio" tabindex="-1" name="tl">
+                                        <span>今天</span>
+                                    </label>
+                                    <label tabindex="-1">
+                                        <input type="radio" tabindex="-1" name="tl">
+                                        <span>三天</span>
+                                    </label>
+                                    <label tabindex="-1">
+                                        <input type="radio" tabindex="-1" name="tl">
+                                        <span>一星期</span>
+                                    </label>
+                                    <label tabindex="-1">
+                                        <input type="radio" tabindex="-1" name="tl">
+                                        <span>二星期</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div style="display: block;" class="f_top_list">
+                                <span>分類：</span>
+                                {if condition="($type == 'r')"}
+                                <div style="display: contents;">
+                                    <label tabindex="-1">
+                                        <span class="checked" id="rec" style="padding: 6px 12px;">存款</span>
+                                    </label>
+                                    <label tabindex="-1">
+                                        <span id="dra" style="padding: 6px 12px;">提款</span>
+                                    </label>
+                                </div>
+                                {else /}
+                                <div style="display: contents;">
+                                    <label tabindex="-1">
+                                        <span id="rec" style="padding: 6px 12px;">存款</span>
+                                    </label>
+                                    <label tabindex="-1">
+                                        <span class="checked" id="dra" style="padding: 6px 12px;">提款</span>
+                                    </label>
+                                </div>
+                                {/if}
+                            </div>
+                            <div style="display: none; " class="f_top_list">
+                                <span>狀態：</span>
+                                <div style="display: contents;">
+                                    <label tabindex="-1">
+                                        <span class="checked" id="all" style="padding: 6px 12px;">全部</span>
+                                    </label>
+                                    <label tabindex="-1">
+                                        <span id="sing" style="padding: 6px 12px;">審核中</span>
+                                    </label>
+                                    <label tabindex="-1">
+                                        <span id="ss" style="padding: 6px 12px;">成功</span>
+                                    </label>
+                                    <label tabindex="-1">
+                                        <span id="sf" style="padding: 6px 12px;">失敗</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <table class="layui-table layui-form">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align:center;">時間</th>
+                                        <th style="text-align:center; display: none;">類型</th>
+                                        <th style="text-align:center;">金額</th>
+                                    </tr>
+                                        <tr>
+                                        <th style="text-align:center;">狀態</th>
+                                        <th style="text-align:center;">備註</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {volist name="data" id="vo"}
+                                    <tr>
+                                        <td style="text-align:center;">{$vo.updated_at}</td>
+
+                                        <td style="text-align:center; display: none;">{$vo.remark}</td>
+
+                                        <td style="text-align:center;">{$vo.money}</td>
+                                    </tr>
+                                    <tr>
+                                        {if condition="($vo.status == 1)"}
+<td style="text-align:center;">審核中</td>
+                                        {elseif condition="($vo.status == 2)"/}
+                                        <td style="text-align:center; color: green;">審核通過</td>
+                                        {else /}
+                                        <td style="text-align:center; color: red;">審核沒通過</td>
+                                        {/if}
+                                        </if>
+
+                                        <td style="text-align:center;">{$vo.fail_reason}</td>
+                                    </tr>
+                                    {/volist}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-card-body">
+                            {$page|raw}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+        layui.use(['laydate','form'], function(){
+            var laydate = layui.laydate;
+            var  form = layui.form;
+
+            // 监听全选
+            form.on('checkbox(checkall)', function(data){
+
+            if(data.elem.checked){
+                $('tbody input').prop('checked',true);
+            }else{
+                $('tbody input').prop('checked',false);
+            }
+            form.render('checkbox');
+            }); 
+        
+            //执行一个laydate实例
+            laydate.render({
+            elem: '#start' //指定元素
+            ,type: 'datetime'
+            });
+
+            //执行一个laydate实例
+            laydate.render({
+            elem: '#end' //指定元素
+            ,type: 'datetime'
+            });
+
+        });
+
+        
+
+    </script>
+</html>

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+        <script src="//cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+        <script src="//cdn.staticfile.org/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    </head>
+	<style>
+.x-nav {
+    padding: 0 20px;
+    position: relative;
+    z-index: 99;
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 39px;
+    height: 39px;
+    overflow: hidden;
+    background: #eee;
+}
+	.layui-card-body{
+		padding: 0px;
+	}
+.layui-card-body .layui-table {
+    margin: auto;
+}
+.layui-col-md12{
+	background-color: #fff;
+	}
+.layui-card {
+    margin-bottom: 15px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 0px 0px 0 rgb(0 0 0 / 5%);
+}
+.edit{
+	width:120px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background: #00A69E;
+	margin: 10px auto;
+	}
+.edit {
+		display:block;
+		color: #fff;
+	}
+#lv span{
+		padding: 5px 10px;
+	border-radius: 56px
+	}
+.f_tt{
+		color:#FFFFFF;
+		background: #4BBFAF;
+	}
+button, input, optgroup, option, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+    border: 1px solid #ddd;
+    line-height: 35px;
+    background: #eee;
+    color: #4BBFAF;
+}
+</style>
+    <body>
+        
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <table class="layui-table layui-form">
+                                    <tr>
+                                        <th class="f_tt"  style="text-align:center;">會員帳號</th>
+                                        <th style="text-align:center;">{$name}</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt" style="text-align:center;">會員姓名</th>
+                                        <th style="text-align:center;">{$realname}</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt"  style="text-align:center;">聯絡電話</th>
+                                        <th style="text-align:center;">{$phone}</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt"  style="text-align:center;">密碼</th>
+                                        <th style="text-align:center;"><input id="password" type="password" style="text-align: center;" value="{$password}"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt"  style="text-align:center;">銀行名稱</th>
+                                        <th style="text-align:center;"><input id="bank_name" type="text" style="text-align: center;" value="{$bank_name}"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt"  style="text-align:center;">分行名稱</th>
+                                        <th style="text-align:center;"><input id="bank_branch_name" type="text" style="text-align: center;" value="{$bank_branch_name}"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt"  style="text-align:center;">銀行卡號</th>
+                                        <th style="text-align:center;"><input id="bank_card" type="text" style="text-align: center;" value="{$bank_card}"></th>
+                                    </tr>
+                                    <form id="formid" method="post">
+                                        <tr style="display: none;">
+                                            <th class="f_tt"  style="text-align:center;">上傳證件</th>
+                                            <th style="text-align:center;"><input id="id_pic" type="file" name="id_pic" multiple></th>
+                                        </tr>
+                                        <tr style="display: none;">
+                                            <th class="f_tt"  style="text-align:center;">上傳存摺</th>
+                                            <th style="text-align:center;"><input id="post_pic" type="file" name="post_pic" multiple></th>
+                                        </tr>
+                                    </form>
+                                    
+                            </table>
+                        </div>
+                        <div class="edit" onclick="update();">確定
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+        layui.use(['laydate','form'], function(){
+            var laydate = layui.laydate;
+            var  form = layui.form;
+
+            // 监听全选
+            form.on('checkbox(checkall)', function(data){
+
+                if(data.elem.checked){
+                    $('tbody input').prop('checked',true);
+                }else{
+                    $('tbody input').prop('checked',false);
+                }
+                form.render('checkbox');
+            });
+        });
+
+        function update(){
+            var locurl = "{:url('index/index/userinfo')}?i=";
+
+            
+            var bank_name = $('#bank_name').val();
+            var bank_branch_name = $('#bank_branch_name').val();
+            var bank_card = $('#bank_card').val();
+            var id_pic    = $("#id_pic").val();
+            var post_pic  = $("#post_pic").val();
+            var password  = $("#password").val();
+            
+            if(bank_name.length == 0) {
+
+                alert("銀行名稱不能為空");
+
+                return false;
+
+            }else if(bank_branch_name.length == 0) {
+
+                alert("銀行網點不能為空");
+
+                return false;
+
+            }else if(bank_card.length == 0) {
+
+                alert("銀行卡號不能為空");
+
+                return false;
+
+            }else if(password.length == 0) {
+
+                alert("密碼不能為空");
+
+                return false;
+
+            };
+            var data = {bank_name:bank_name,bank_branch_name:bank_branch_name,bank_card:bank_card,password:password};
+
+            $.ajax({
+
+                type:"POST",
+
+                url:"{:url('index/post_info')}",
+
+                data:data,
+
+                dataType:"json",
+
+                success:function(data) {
+
+                    if(data == 1){
+                        // if(id_pic.length != 0){
+                        //     uplaodimg_id();
+                        // }
+
+                        // if(post_pic.length != 0){
+                        //     uplaodimg_post();
+                        // }
+
+                        alert("修改成功");
+                        window.location.href="{:url('index/index/userinfo')}?i=";
+                    }else{
+                        alert("修改失敗，請聯繫客服");
+                    };
+
+                },error:function(jqXHR) {
+                    alert("修改失敗，請聯繫客服");
+                },
+
+            });
+        }
+
+        //上傳身分證照片
+        function uplaodimg_id(){
+
+            var data = new FormData($('#formid')[0]);
+
+            $.ajax({  
+
+                url: "{:url('index/uploadimgid')}",
+
+                type: 'POST',
+
+                data: data,
+
+                dataType: 'JSON',
+
+                cache: false,
+
+                processData: false,
+
+                contentType: false ,
+
+                success:function(data) {
+
+                    if(data == 1){
+
+                    }else{
+                        alert("身分證上傳失敗，請聯繫客服1");
+                    }
+
+                },error:function(jqXHR) {
+                    alert("身分證上傳失敗，請聯繫客服2");
+                },
+
+            });
+
+            return false;
+        }
+
+        function uplaodimg_post(){
+
+            var data = new FormData($('#formid')[0]);
+
+            $.ajax({  
+
+                url: "{:url('index/uploadimgpost')}", 
+
+                type: 'POST',
+
+                data: data,
+
+                dataType: 'JSON',  
+
+                cache: false,
+
+                processData: false,
+
+                contentType: false ,
+
+                success:function(data) {
+                    if(data == 1){
+
+                    }else{
+                        alert("銀行封面上傳失敗，請聯繫客服");
+                    }
+                },error:function(jqXHR) {
+                    alert("銀行封面上傳失敗，請聯繫客服");
+                },
+
+            });
+
+            return false;
+
+        }
+
+    </script>
+</html>

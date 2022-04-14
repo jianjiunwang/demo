@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+    </head>
+<style>
+    .x-nav {
+        padding: 0 20px;
+        position: relative;
+        z-index: 99;
+        border-bottom: 1px solid #e5e5e5;
+        line-height: 39px;
+        height: 39px;
+        overflow: hidden;
+        background: #eee;
+    }
+
+</style>
+    <body>
+        <div class="x-nav">
+          <span class="layui-breadcrumb">
+            <a href="">管理</a>
+            <a>
+              <cite>會員输赢記錄</cite></a>
+          </span>
+          <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" onclick="location.reload()" title="刷新">
+            <i class="layui-icon layui-icon-refresh" style="line-height:30px"></i></a>
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <!--<div class="layui-card-body ">-->
+                        <!--    <form class="layui-form layui-col-space5">-->
+                        <!--    	 <div class="layui-input-inline layui-show-xs-block">-->
+                        <!--            <input class="layui-input" placeholder="開始日" name="start" id="start" value="{$start}">-->
+                        <!--         </div>-->
+                        <!--         <div class="layui-input-inline layui-show-xs-block">-->
+                        <!--            <input class="layui-input" placeholder="截至日" name="end" id="end"  value="{$end}">-->
+                        <!--         </div>-->
+                                
+                        <!--        <div class="layui-inline layui-show-xs-block">-->
+                        <!--            <button class="layui-btn"  lay-submit="" lay-filter="sreach"><i class="layui-icon">&#xe615;</i></button>-->
+                        <!--        </div>-->
+                        <!--    </form>-->
+                        <!--</div>-->
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <table class="layui-table layui-form">
+                                <thead>
+                                  <tr>
+                                    <th style="text-align:center;">期號</th>
+                                    <th style="text-align:center;">時間</th>
+                                    <th style="text-align:center;">比特幣/美金<br/>BTCUSDT</th>
+                                    <th style="text-align:center;">以太幣/美金<br/>ETHUSDT</th>
+                                    <th style="text-align:center;">波卡幣/美金<br/>DOTUSDT</th>
+                                    <th style="text-align:center;">瑞波幣/美金<br/>XRPUSDT</th>
+                                    <th style="text-align:center;">萊特幣/美金<br/>LTCUSDT</th>
+                                    <th style="text-align:center;">門羅幣/美金<br/>XMRUSDT</th>
+                                    <th style="text-align:center;">達世幣/美金<br/>DASHUSDT</th>
+                                    <th style="text-align:center;">量子鏈幣/美金<br/>QTUMUSDT</th>
+                                    <th style="text-align:center;">美金/英鎊<br/>USDGBP</th>
+                                    <th style="text-align:center;">美金/歐元<br/>USDEUR</th>
+                                    <th style="text-align:center;">美金/加元<br/>USDCAD</th>
+                                    <th style="text-align:center;">美金/澳元<br/>USDAUD</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                 {volist name="list" id="vo"}
+                                  <tr>
+                                    <td style="text-align:center;">{$vo.qishu}</td>
+                                    <td style="text-align:center;">{$vo.datetime}</td>
+                                    <td style="text-align:center;">{$vo.BTCUSDT|raw}</td>
+                                    <td style="text-align:center;">{$vo.ETHUSDT|raw}</td>
+                                    <td style="text-align:center;">{$vo.DOTUSDT|raw}</td>
+                                    <td style="text-align:center;">{$vo.XRPUSDT|raw}</td>
+                                    <td style="text-align:center;">{$vo.LTCUSDT|raw}</td>
+                                    <td style="text-align:center;">{$vo.XMRUSDT|raw}</td>
+                                    <td style="text-align:center;">{$vo.DASHUSDT|raw}</td>
+                                    <td style="text-align:center;">{$vo.QTUMUSDT|raw}</td>
+                                    <td style="text-align:center;">{$vo.USDGBP|raw}</td>
+                                    <td style="text-align:center;">{$vo.USDEUR|raw}</td>
+                                    <td style="text-align:center;">{$vo.USDCAD|raw}</td>
+                                    <td style="text-align:center;">{$vo.USDAUD|raw}</td>
+                                  </tr>
+                                  {/volist}
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="layui-card-body">
+                          	{$page|raw}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+      layui.use(['laydate','form'], function(){
+        var laydate = layui.laydate;
+        var  form = layui.form;
+
+
+        // 监听全选
+        form.on('checkbox(checkall)', function(data){
+
+          if(data.elem.checked){
+            $('tbody input').prop('checked',true);
+          }else{
+            $('tbody input').prop('checked',false);
+          }
+          form.render('checkbox');
+        }); 
+        
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#start' //指定元素
+          ,type: 'datetime'
+        });
+
+        //执行一个laydate实例
+        laydate.render({
+          elem: '#end' //指定元素
+          ,type: 'datetime'
+        });
+
+
+      });
+
+    </script>
+</html>

@@ -1,0 +1,1593 @@
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/earlyaccess/notosanstc.css);
+.cf {
+  *zoom: 1; }
+
+.cf::before, .cf::after {
+  display: table;
+  content: " "; }
+
+.cf::after {
+  clear: both; }
+
+.sprite {
+  text-align: center;
+  display: inline-block; }
+
+.sprite img {
+  display: block;
+  width: 100%; }
+
+.size--20 {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px; }
+
+.size--30 {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 18px; }
+
+.size--40 {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 24px; }
+
+.size--50 {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 30px; }
+
+.size--60 {
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  font-size: 36px; }
+
+.size--70 {
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
+  font-size: 42px; }
+
+.size--80 {
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 48px; }
+
+.size--90 {
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  font-size: 54px; }
+
+.size--100 {
+  width: 100px;
+  height: 100px;
+  line-height: 100px;
+  font-size: 60px; }
+
+.size--110 {
+  width: 110px;
+  height: 110px;
+  line-height: 110px;
+  font-size: 66px; }
+
+.size--120 {
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  font-size: 72px; }
+
+.size--130 {
+  width: 130px;
+  height: 130px;
+  line-height: 130px;
+  font-size: 78px; }
+
+.size--140 {
+  width: 140px;
+  height: 140px;
+  line-height: 140px;
+  font-size: 84px; }
+
+.size--150 {
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  font-size: 90px; }
+
+.size--160 {
+  width: 160px;
+  height: 160px;
+  line-height: 160px;
+  font-size: 96px; }
+
+.size--170 {
+  width: 170px;
+  height: 170px;
+  line-height: 170px;
+  font-size: 102px; }
+
+.size--180 {
+  width: 180px;
+  height: 180px;
+  line-height: 180px;
+  font-size: 108px; }
+
+.img-wrap img {
+  display: block;
+  max-width: 100%; }
+
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.pos-r {
+  position: relative; }
+
+.pos-ab {
+  position: absolute; }
+
+body, html {
+  -ms-touch-action: pan-y pan-x;
+  touch-action: pan-y pan-x;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+@media screen and (min-width: 1024px) and (max-height: 1024px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: auto; } }
+h1, h2, h3, h4, h5, h6, p, a, button:not(.fas) {
+  font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important; }
+
+.gw {
+  display: block;
+  width: 100%; }
+
+label {
+  margin-bottom: 0; }
+
+.hidden {
+  display: none !important; }
+
+#page {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  align-content: flex-start; }
+
+body {
+  background-color: #141414; }
+
+.body-block {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%; }
+
+header {
+  width: 320px;
+  height: 100%; }
+
+header .top-header {
+  width: 100%;
+  height: 110px;
+  padding: 0 1rem;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  border-bottom: 2px solid #ffffff;
+  position: relative; }
+
+header .top-header .logo {
+  width: 70px;
+  height: 70px;
+  padding: 5px;
+  margin-right: 10px; }
+
+header .top-header .logo img {
+  width: 100%; }
+
+header .top-header .info {
+  width: calc(100% - 70px); }
+
+header .top-header .info .name {
+  font-size: 18px;
+  color: #ffffff;
+  margin-bottom: 5px; }
+
+header .top-header .info .wallet {
+  border-radius: 5px;
+  background-color: #2d2f36;
+  display: inline-block;
+  padding: 5px 10px;
+  color: #ffffff;
+  font-size: 14px; }
+
+header .top-header .info .wallet i {
+  color: #d6b456;
+  font-size: 130%;
+  padding-left: 5px; }
+
+header .top-header .lang-row {
+  position: absolute;
+  right: 0;
+  top: 1rem; }
+
+header .top-header .lang-row .lang-img {
+  background-image: url("/img/_common/lang-img.jpg");
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: calc(30px * 0.6667);
+  display: inline-block;
+  vertical-align: middle; }
+
+header .top-header .lang-row .lang-img.zh_TW {
+  background-position: 100% 0%; }
+
+header .top-header .lang-row .lang-img.zh_CN {
+  background-position: 100% 25%; }
+
+header .top-header .lang-row .lang-img.en_US {
+  background-position: 100% 50%; }
+
+header .top-header .lang-row .lang-img.vi_VN {
+  background-position: 100% 75%; }
+
+header .top-header .lang-row .nav-footer-link {
+  border-radius: 4px;
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 2px 5px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  text-align: center;
+  outline: none;
+  transition: all ease .2s;
+  margin-right: 5px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer; }
+
+header .top-header .lang-row .nav-footer-link:focus {
+  outline: none; }
+
+header .header-link {
+  width: 100%;
+  height: calc(100% - 110px);
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: flex-start; }
+
+header .header-link .top-title {
+  padding: 5px 0;
+  color: #ffffff;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start; }
+
+header .header-link .top-title span {
+  width: 50%;
+  text-align: center;
+  font-size: 14px;
+  font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  color: #d4d4d4; }
+
+@media screen and (max-width: 1024px) {
+  header .header-link .top-title {
+    display: none; } }
+header .header-link .link-block {
+  height: 100%;
+  width: 100%;
+  border: 1px solid #999;
+  padding: 5px 0; }
+
+header .header-link .link-block .nav-list {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 5px 1rem;
+  border-left: 2px solid transparent;
+  border-right: 2px solid transparent;
+  transition: all ease .2s; }
+
+header .header-link .link-block .nav-list.now {
+  border-color: #fff;
+  background-color: #253b58;
+  pointer-events: none; }
+
+header .header-link .link-block .nav-list > * {
+  width: 50%;
+  color: #ffffff;
+  font-size: 14px; }
+
+header .header-link .link-block .nav-list .nav-name {
+  font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  font-weight: bold; }
+
+header .header-link .link-block .nav-list .view-item-amplitude span {
+  border-radius: 5px;
+  background-color: #555;
+  font-weight: bold;
+  text-align: center;
+  padding: 8px 10px;
+  transition: all ease 50ms; }
+
+header .header-link .link-block .nav-list .view-item-amplitude[data-amplitude="up"] span {
+  background-color: #ea2127; }
+
+header .header-link .link-block .nav-list .view-item-amplitude[data-amplitude="down"] span {
+  background-color: #18c052; }
+
+header .header-link .link-block .nav-list:hover {
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.2); }
+
+header .header-link .bottom-time {
+  width: 100%;
+  padding: 1.5rem 1rem;
+  text-align: center; }
+
+header .header-link .bottom-time .game-time {
+  color: #555;
+  font-size: 12px; }
+
+header .header-link .bottom-time .game-time span {
+  font-size: 14px;
+  color: #999; }
+
+@media screen and (max-width: 1024px) {
+  header {
+    width: 100%;
+    height: 100px; }
+
+  header .top-header {
+    height: auto;
+    border-bottom: 1px solid #999; }
+
+  header .top-header .logo {
+    width: 50px;
+    height: 50px;
+    padding: 10px; }
+
+  header .top-header .info {
+    width: calc(100% - 50px);
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start; }
+
+  header .top-header .info .name {
+    font-size: 16px;
+    margin-right: 10px;
+    margin-bottom: 0; }
+
+  header .top-header .info .wallet {
+    font-size: 12px; }
+
+  header .top-header .lang-row {
+    top: 0.7rem; }
+
+  header .header-link {
+    height: auto; }
+
+  header .header-link .link-block {
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden; }
+
+  header .header-link .link-block {
+    height: auto;
+    border: 0;
+    border-bottom: 1px solid #999;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: flex-start; }
+
+  header .header-link .link-block .nav-list {
+    width: auto;
+    padding: 5px;
+    order: 2; }
+
+  header .header-link .link-block .nav-list.now {
+    order: 1; }
+
+  header .header-link .link-block .nav-list > * {
+    font-size: 12px;
+    white-space: nowrap; }
+
+  header .header-link .link-block .nav-list .nav-name {
+    min-width: 70px; }
+
+  header .header-link .link-block .nav-list .view-item-amplitude span {
+    padding: 3px 5px; }
+
+  header .header-link .bottom-time {
+    display: none; } }
+@media screen and (max-width: 374px) {
+  header .top-header .info .name {
+    font-size: 12px; }
+
+  header .top-header .info .wallet {
+    font-size: 12px; } }
+main {
+  width: calc(100% - 320px);
+  height: 100%; }
+
+main.hidden {
+  width: 100%;
+  display: block !important; }
+
+@media screen and (max-width: 1024px) {
+  main {
+    height: calc(100% - 100px);
+    width: 100%;
+    padding-bottom: 4.5rem; } }
+@supports (-webkit-overflow-scrolling: touch) {
+  main {
+    padding-bottom: 7.5rem; } }
+#inside-page {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 10px 15px;
+  position: relative; }
+
+#inside-page .game-info {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  height: 36px; }
+
+#inside-page .game-info > * {
+  border: 1px solid #ffffff;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #ffffff;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important; }
+
+#inside-page .game-info > * + * {
+  border-left: 0; }
+
+#inside-page .game-info .name {
+  background-color: rgba(46, 123, 216, 0.55); }
+
+#inside-page .game-info .info-item {
+  background-color: #282828;
+  cursor: pointer;
+  transition: all ease .2s; }
+
+#inside-page .game-info .info-item span {
+  padding-right: 5px; }
+
+#inside-page .game-info .info-item:hover {
+  background-color: #424242; }
+
+#inside-page .game-box {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 130px - 36px);
+  overflow: hidden; }
+
+#inside-page .game-box .now-data {
+  position: absolute;
+  right: 0;
+  top: -100%;
+  width: 100%;
+  height: 2px;
+  background-color: rgba(226, 4, 4, 0.8); }
+
+#inside-page .game-box .now-data b, #inside-page .game-box .now-data i {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  line-height: 1;
+  color: #ffffff;
+  transform: translateY(40%);
+  letter-spacing: 0.5px; }
+
+#inside-page .game-box .now-data b {
+  padding: 5px 1rem 3px 3px;
+  font-size: 10px;
+  background-color: #e20404; }
+
+#inside-page .game-box .now-data b:empty {
+  opacity: 0; }
+
+#inside-page .game-box .now-data b::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translateX(-100%);
+  border-top: 9px solid transparent;
+  border-right: 9px solid #e20404;
+  border-bottom: 9px solid transparent;
+  border-left: 9px solid transparent; }
+
+#inside-page .game-box .now-data i {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 1px 0.4rem 3px 3px;
+  font-style: normal;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important; }
+
+#inside-page .game-box #resetZoom {
+  color: rgba(16, 21, 27, 0.9);
+  cursor: pointer;
+  height: 50px;
+  margin-top: -25px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  font-size: 0;
+  padding: 0;
+  width: 0px;
+  border: none;
+  border-radius: 3px;
+  background-color: rgba(254, 183, 57, 0.8);
+  transform: translateX(100%); }
+
+#inside-page .game-box #resetZoom i {
+  position: absolute;
+  right: -10px;
+  top: 50%;
+  transform: translate(50%, -50%); }
+
+#inside-page .game-box #resetZoom:focus, #inside-page .game-box #resetZoom:active {
+  outline: none; }
+
+#inside-page .game-box #resetZoom.active {
+  width: 35px;
+  transform: translateX(0);
+  font-size: 1rem;
+  transition: all .3s ease; }
+
+#inside-page .game-box #resetZoom.active i {
+  right: 50%;
+  transition: all .3s ease; }
+
+@media screen and (max-width: 768px) {
+  #inside-page .game-box #resetZoom {
+    height: 40px;
+    margin-top: -20px;
+    opacity: 0.8;
+    right: auto;
+    left: 0; } }
+#inside-page .control-box {
+  border: 1px solid #b3b3b3;
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  padding: 10px;
+  height: 130px; }
+
+#inside-page .control-box > form {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start; }
+
+@media screen and (max-width: 1400px) {
+  #inside-page .control-box {
+    width: 100%; } }
+#inside-page .time-block {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%; }
+
+#inside-page .time-block > * {
+  background-color: #282828;
+  padding: 2.5px 10px;
+  color: #ffffff;
+  font-size: 14px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: flex-start; }
+
+@media screen and (max-width: 1366px) {
+  #inside-page .time-block > * {
+    font-size: 12px;
+    padding: 5px; } }
+#inside-page .time-block > * + * {
+  margin-left: 10px; }
+
+#inside-page .time-block h6 {
+  margin-bottom: 0;
+  font-size: inherit;
+  color: inherit;
+  padding-right: 10px; }
+
+#inside-page .time-block input {
+  width: 110px;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+  color: inherit;
+  font-size: inherit; }
+
+#inside-page .time-block .time-box {
+  color: inherit;
+  font-size: inherit; }
+
+#inside-page .time-block .time-box #time {
+  padding-right: 2px; }
+
+#inside-page .button-row {
+  width: 50%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100%; }
+
+#inside-page .button-row .button-item {
+  width: 100%;
+  height: calc(100% - 34px);
+  padding-top: 5px;
+  padding-right: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between; }
+
+#inside-page .button-row .button-item label {
+  width: calc(33.3334% - 5px);
+  height: calc(50% - 5px);
+  cursor: pointer;
+  background-color: #b3b3b3;
+  padding: 10px 15px;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  font-weight: bold;
+  transition: all ease .2s;
+  font-size: 15px; }
+
+@media screen and (max-width: 1366px) {
+  #inside-page .button-row .button-item label {
+    font-size: 14px; } }
+#inside-page .button-row .button-item label:nth-of-type(1), #inside-page .button-row .button-item label:nth-of-type(2) {
+  width: calc(50% - 5px); }
+
+#inside-page .button-row .button-item label:nth-of-type(3), #inside-page .button-row .button-item label:nth-of-type(4), #inside-page .button-row .button-item label:nth-of-type(7) {
+  margin-top: 10px; }
+
+#inside-page .button-row .button-item label:nth-of-type(3) {
+  margin-left: 0 !important; }
+
+#inside-page .button-row .button-item label + label {
+  margin-left: 5px; }
+
+#inside-page .button-row .button-item label span {
+  display: block;
+  text-align: center;
+  margin-left: 5px; }
+
+#inside-page .button-row .button-item label.green {
+  background-color: #08d205; }
+
+#inside-page .button-row .button-item label.red {
+  background-color: #e20404; }
+
+#inside-page .button-row .button-item label.outer {
+  background-color: #3a72b7; }
+
+@media screen and (max-width: 1024px) {
+  #inside-page .button-row .button-item label.outer {
+    background-color: #fbfbfb; } }
+#inside-page .money-rank {
+  width: 40%;
+  height: 100%;
+  padding-right: 10px; }
+
+#inside-page .money-rank .rank-box {
+  height: 100%; }
+
+#inside-page .money-rank .rank-box .add-box {
+  height: calc(100% - 35px);
+  transition: all ease .2s; }
+
+#inside-page .money-rank .rank-box .add-box button {
+  outline: none;
+  width: calc((100% / 6) - 5px);
+  margin: 2.5px;
+  background-color: #282828;
+  color: #fff;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+  font-size: 14px; }
+
+#inside-page .money-rank .rank-box .add-box button:nth-of-type(12) ~ * {
+  display: none; }
+
+#inside-page .money-rank .rank-box .input-block {
+  height: 100%; }
+
+#inside-page .money-rank .rank-box .input-block input {
+  height: calc(100% - 60px);
+  outline: none;
+  text-align: center;
+  width: 100%;
+  font-size: 18px;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  font-weight: 600; }
+
+@media screen and (max-width: 1024px) {
+  #inside-page .money-rank .rank-box .input-block input {
+    width: 100%;
+    height: 100%; } }
+#inside-page .money-rank .rank-box .input-block span {
+  float: left;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  background-color: #282828;
+  padding: 0 10px;
+  color: #ffffff;
+  font-size: 14px;
+  margin-bottom: 10px;
+  margin-top: 10px; }
+
+@media screen and (max-width: 1024px) {
+  #inside-page .money-rank .rank-box .input-block span {
+    display: none !important; } }
+#inside-page .money-rank .rank-box .input-block label {
+  width: 50px;
+  height: 50px;
+  font-size: 25px;
+  color: #ffffff;
+  line-height: 50px;
+  text-align: center;
+  display: none;
+  transition: all ease .2s; }
+
+@media screen and (max-width: 1024px) {
+  #inside-page .money-rank .rank-box .input-block label {
+    display: inline-block; } }
+#inside-page form > button {
+  width: 10%;
+  height: 100%;
+  outline: none;
+  background-color: #ff9f0e;
+  border: 0;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  font-weight: 600;
+  font-size: 15px; }
+
+@media screen and (max-width: 1024px) {
+  #inside-page form > button {
+    background-color: #e8c276; } }
+#inside-page #game-1:checked ~ .button-row .button-item [for="game-1"] {
+  box-shadow: inset 0 0 0 30px rgba(20, 20, 20, 0.6); }
+
+#inside-page #game-2:checked ~ .button-row .button-item [for="game-2"] {
+  box-shadow: inset 0 0 0 30px rgba(20, 20, 20, 0.6); }
+
+#inside-page #game-3:checked ~ .button-row .button-item [for="game-3"] {
+  box-shadow: inset 0 0 0 30px rgba(20, 20, 20, 0.6); }
+
+#inside-page #game-4:checked ~ .button-row .button-item [for="game-4"] {
+  box-shadow: inset 0 0 0 30px rgba(20, 20, 20, 0.6); }
+
+#inside-page #game-5:checked ~ .button-row .button-item [for="game-5"] {
+  box-shadow: inset 0 0 0 30px rgba(20, 20, 20, 0.6); }
+
+#inside-page #game-6:checked ~ .button-row .button-item [for="game-6"] {
+  box-shadow: inset 0 0 0 30px rgba(20, 20, 20, 0.6); }
+
+#inside-page #game-7:checked ~ .button-row .button-item [for="game-7"] {
+  box-shadow: inset 0 0 0 30px rgba(20, 20, 20, 0.6); }
+
+@media screen and (max-width: 1024px) {
+  #inside-page {
+    padding: 5px; }
+
+  #inside-page .game-info {
+    height: 27px; }
+
+  #inside-page .game-info > * {
+    font-size: 14px;
+    padding: 2px 5px; }
+
+  #inside-page .game-box {
+    height: calc(100% - 130px - 27px); }
+
+  #inside-page .control-box {
+    padding: 5px; }
+
+  #inside-page .time-block > * {
+    padding: 0;
+    background-color: transparent;
+    flex-flow: row nowrap;
+    white-space: nowrap; }
+
+  #inside-page .button-row {
+    width: 100%;
+    height: 70%;
+    padding-bottom: 5px; }
+
+  #inside-page .button-row .button-item {
+    padding-right: 0;
+    padding-top: 0;
+    height: calc(100% - 20px); }
+
+  #inside-page .button-row .button-item label {
+    height: calc(50% - 2.5px); }
+
+  #inside-page .button-row .button-item label:nth-of-type(3) {
+    margin-top: 5px; }
+
+  #inside-page .button-row .button-item label:nth-of-type(4) {
+    margin-top: 5px; }
+
+  #inside-page .button-row .button-item label:nth-of-type(5) {
+    margin-top: 5px; }
+
+  #inside-page .button-row .button-item label:nth-of-type(6) {
+    margin-top: 5px; }
+
+  #inside-page .button-row .button-item label:nth-of-type(7) {
+    margin-top: 5px; }
+
+  #inside-page .money-rank {
+    width: 75%;
+    height: 30%; }
+
+  #inside-page .money-rank .rank-box {
+    position: relative; }
+
+  #inside-page .money-rank .rank-box .add-box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    transform: translateY(-100%);
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ffffff;
+    background-color: #282828;
+    padding: 5px;
+    z-index: 2;
+    opacity: 0;
+    pointer-events: none; }
+
+  #inside-page .money-rank .rank-box .add-box button {
+    width: 50%;
+    border: 0;
+    margin: 0;
+    padding: 5px 0; }
+
+  #inside-page .money-rank .rank-box #add-control:checked ~ .input-block label {
+    transform: scaleY(-1); }
+
+  #inside-page .money-rank .rank-box #add-control:checked + .add-box {
+    opacity: 1;
+    pointer-events: painted; }
+
+  #inside-page .money-rank .rank-box .input-block {
+    height: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between; }
+
+  #inside-page form > button {
+    width: 25%;
+    height: 30%; } }
+@media screen and (max-width: 374px) {
+  #inside-page .game-info > * {
+    font-size: 12px; }
+
+  #inside-page .time-block > * {
+    font-size: 11px; } }
+.cover {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: #000;
+  background-image: linear-gradient(to left top, #464646 0%, #000 100%);
+  transition: all .2s ease; }
+
+.cover * {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none; }
+
+.cover::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-repeat: repeat;
+  opacity: 0.4; }
+
+.cover img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 60%; }
+
+@media screen and (max-width: 1024px) {
+  .cover img {
+    width: 400px; } }
+@media screen and (max-width: 480px) {
+  .cover img {
+    width: 300px; } }
+.cover .cover-box {
+  position: absolute;
+  left: 15%;
+  top: 25%;
+  transform: translateY(-50%);
+  width: 50%;
+  max-width: 450px; }
+
+.cover .cover-box h4 {
+  font-size: 3.5rem;
+  color: #ffffff;
+  font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  font-weight: bold;
+  line-height: 1.2; }
+
+.cover .cover-box h4 span {
+  display: block;
+  font-size: 55%;
+  font-weight: 500;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  letter-spacing: 1px;
+  transform: scaleY(0.9); }
+
+@media screen and (max-width: 1024px) {
+  .cover .cover-box h4 {
+    font-size: 3rem; } }
+.cover .cover-box .cover-text {
+  border-radius: 5px;
+  padding: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+  background-color: #5a5a5a;
+  font-family: -apple-system,BlinkMacSystemFont,"Noto Sans TC","Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  position: relative; }
+
+.cover .cover-box .cover-text h5 {
+  position: absolute;
+  top: -25%;
+  left: 0;
+  font-weight: 600;
+  font-size: 1.2rem;
+  line-height: 1;
+  margin: 0;
+  background-color: #5a5a5a;
+  color: #e2e2e2;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  border-radius: 3px; }
+
+.cover .cover-box .cover-text p {
+  font-size: 1.05rem;
+  line-height: 1.3;
+  font-weight: 500;
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  color: #e2e2e2; }
+
+@media screen and (max-width: 1024px) {
+  .cover .cover-box .cover-text h5 {
+    font-size: 1rem; }
+
+  .cover .cover-box .cover-text p {
+    font-size: 0.95rem; } }
+@media screen and (max-width: 1024px) {
+  .cover .cover-box {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 2rem auto 0 auto;
+    transform: translateX(0%) translateY(0%);
+    max-width: 350px;
+    width: 100%;
+    padding: 0 10px; } }
+.cover.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: painted; }
+
+.analysis-box {
+  display: none; }
+
+.game-modal {
+  bottom: auto;
+  height: 100%; }
+
+.game-modal .modal-xl {
+  height: calc(100% - (1.75rem * 2));
+  min-height: 550px; }
+
+@media screen and (max-width: 575px) and (orientation: portrait) {
+  .game-modal .modal-xl {
+    height: calc(100% - (8px * 2)); } }
+@media screen and (max-width: 575px) and (orientation: landscape) {
+  .game-modal .modal-xl {
+    height: auto; } }
+.game-modal .modal-xl .modal-content {
+  height: 100%; }
+
+.game-modal .modal-xl .modal-content .modal-body {
+  height: calc(100% - 62px); }
+
+.game-modal .modal-xl .modal-content .modal-body .log {
+  height: 100%; }
+
+.game-modal .modal-xl .modal-content .modal-body .log .modal-body-flex {
+  height: 100%; }
+
+.game-modal .modal-xl .modal-content .modal-body .log .modal-body-flex .modal-body-bottom {
+  height: 100%; }
+
+.game-modal .modal-xl .modal-content .modal-body .log .modal-body-flex .modal-body-bottom .pagination + .modal-body-bottom-scroll {
+  height: calc(100% - 100px); }
+
+.game-modal .modal-xl .modal-content .modal-body .log .modal-body-flex .modal-body-bottom .modal-body-bottom-scroll {
+  height: calc(100% - 30px); }
+
+@media screen and (max-width: 992px) and (orientation: landscape) {
+  .game-modal .modal-xl .modal-content .modal-body .log .modal-body-flex .modal-body-bottom .modal-body-bottom-scroll {
+    min-height: 400px; } }
+.game-modal .modal-xl .modal-content .modal-body .log .info-row {
+  height: 100%; }
+
+.game-modal .modal-xl .modal-content .modal-body .log .info-row .info-scroll {
+  height: 100%; }
+
+.game-modal .modal-xl .modal-content .modal-body .log .info-row .pagination + .info-scroll {
+  height: calc(100% - 49px); }
+
+.game-modal .modal-xl {
+  max-width: 1366px;
+  margin-right: auto;
+  margin-left: auto; }
+
+@media screen and (max-width: 1396px) {
+  .game-modal .modal-xl {
+    max-width: calc(100% - 30px); } }
+.game-modal .modal-dialog {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden; }
+
+.game-modal .modal-header {
+  padding: 0;
+  border-bottom: 0;
+  position: relative; }
+
+.game-modal .modal-header .modal-title {
+  display: block;
+  width: 100%;
+  background-color: #5a5a5a;
+  padding: 0.8rem 1.5rem;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  text-align: center; }
+
+.game-modal .modal-header button {
+  position: absolute;
+  right: 1rem;
+  top: 0.7rem;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 30px;
+  text-align: center;
+  background-color: transparent;
+  color: #fff;
+  border-style: none;
+  padding: 0;
+  cursor: pointer;
+  box-shadow: none;
+  outline: none; }
+
+@media screen and (max-width: 992px) {
+  .game-modal .modal-header .modal-title {
+    padding: 0.2rem 1.5rem;
+    font-size: 1.3rem; }
+
+  .game-modal .modal-header button {
+    top: 0.2rem;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 25px; } }
+.game-modal .modal-body {
+  padding: 0; }
+
+.game-modal .modal-body .modal-body-flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-self: stretch;
+  position: relative;
+  overflow: hidden; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  padding: 5px 15px 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  background-image: url(/img/_common/cross.png);
+  background-repeat: repeat;
+  transition: all ease .2s;
+  z-index: 1050;
+  background-color: silver; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top form {
+  width: 100%;
+  max-width: 600px; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row > * + * {
+  margin-top: 5px; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row h6 {
+  margin-bottom: 0.2rem;
+  font-size: 15px;
+  font-weight: bold;
+  color: #000; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row .btn-row {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 1rem; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row .btn-row .btn {
+  flex: 1 1 calc(50% - 10px);
+  margin-bottom: 0;
+  width: 100%;
+  padding: 0.5rem 0.75rem; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row .btn-row .btn:not(.btn-dark) {
+  background-color: #00769a;
+  border-color: #00769a;
+  color: #fff; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row .btn-row .btn:not(.btn-dark):hover {
+  background-color: #006281;
+  box-shadow: 0 0 0 0.2rem rgba(0, 118, 154, 0.5); }
+
+@media screen and (max-width: 992px) {
+  .game-modal .modal-body .modal-body-flex .modal-body-top .select-row .btn-row .btn {
+    width: calc(50% - 5px); }
+
+  .game-modal .modal-body .modal-body-flex .modal-body-top .select-row .btn-row .btn + .btn {
+    margin-left: 10px; } }
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row .btn-row label {
+  display: none; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row .select-input-box {
+  background-color: #fff;
+  border-radius: 3px;
+  position: relative; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row .select-input-box span {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #ff4500;
+  transition: all ease .15s; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row .select-input-box input, .game-modal .modal-body .modal-body-flex .modal-body-top .select-row .select-input-box select {
+  background-color: transparent;
+  border: 0 solid transparent;
+  outline: none;
+  box-shadow: none;
+  height: 2rem;
+  padding: 5px .5rem; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-top .select-row .select-input-box input:focus + span, .game-modal .modal-body .modal-body-flex .modal-body-top .select-row .select-input-box select:focus + span {
+  width: 100%; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-bottom {
+  width: 100%;
+  padding: 190px 15px 15px;
+  transition: all ease .2s;
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: center; }
+
+@media screen and (max-width: 992px) {
+  .game-modal .modal-body .modal-body-flex .modal-body-bottom {
+    padding: 15px; } }
+.game-modal .modal-body .modal-body-flex .modal-body-bottom .modal-scroll-info {
+  display: none;
+  margin-bottom: 0;
+  line-height: 30px;
+  font-weight: bold;
+  font-size: 1rem;
+  order: 1; }
+
+@media screen and (max-width: 992px) {
+  .game-modal .modal-body .modal-body-flex .modal-body-bottom .modal-scroll-info {
+    display: inline-block; } }
+.game-modal .modal-body .modal-body-flex .modal-body-bottom .modal-body-bottom-scroll {
+  width: 100%;
+  overflow: auto;
+  order: 2; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-bottom .pagination {
+  justify-content: center;
+  padding: 1rem 0 0;
+  margin-bottom: 0;
+  order: 3;
+  width: 100%; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-bottom .pagination a {
+  white-space: nowrap; }
+
+@media screen and (max-width: 992px) {
+  .game-modal .modal-body .modal-body-flex .modal-body-bottom .pagination {
+    justify-content: flex-start;
+    overflow-x: auto; } }
+.game-modal .modal-body .modal-body-flex .modal-body-bottom table {
+  width: 100%;
+  table-layout: fixed; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-bottom table thead th {
+  color: #fff;
+  font-weight: bold;
+  font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  font-size: 1rem;
+  padding: 0.2rem 0.5rem;
+  background-color: #8e7c32;
+  position: sticky;
+  position: -webkit-sticky;
+  top: 0; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-bottom table tbody {
+  background-color: #f3f3f3; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-bottom table tbody tr {
+  border-bottom: 2px dashed silver; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-bottom table tbody tr:hover {
+  background-color: #dadada; }
+
+.game-modal .modal-body .modal-body-flex .modal-body-bottom table tbody tr td {
+  padding: 0.2rem 0.5rem;
+  font-size: 1rem; }
+
+@media screen and (max-width: 375px) {
+  .game-modal .modal-body .modal-body-flex .modal-body-bottom table tbody tr td {
+    font-size: 3.5vmin; } }
+.game-modal .modal-body .modal-body-flex .left-control-btn {
+  width: 60px;
+  height: 35px;
+  line-height: 35px;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 0;
+  background-color: #c70000;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 5px;
+  display: none;
+  transition: all ease .2s;
+  overflow: hidden;
+  float: right;
+  order: 1; }
+
+@media screen and (max-width: 992px) {
+  .game-modal .modal-body .modal-body-flex .modal-body-top {
+    width: 100%;
+    padding: 1rem 15px;
+    right: 0; }
+
+  .game-modal .modal-body .modal-body-flex .left-control-btn, .game-modal .modal-body .modal-body-flex .btn-row label {
+    display: block !important; }
+
+  .game-modal .modal-body .modal-body-flex #body-left-control:checked ~ .modal-body-top {
+    transform: translate(0, -100%); } }
+.game-modal .modal-body .rule-block {
+  width: 100%;
+  height: 100%;
+  min-height: 800px;
+  display: block;
+  position: relative; }
+
+.game-modal .modal-body .rule-block pre {
+  width: 100%;
+  height: 100%;
+  background-color: #252d3a;
+  font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+  font-weight: bold;
+  color: #ffffff;
+  padding: 10px 15px;
+  white-space: pre-wrap;
+  margin-bottom: 0;
+  text-align: left; }
+
+.game-modal .info-row {
+  width: 100%;
+  padding: 15px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start; }
+
+.game-modal .info-row .info-scroll {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #f3f3f3; }
+
+.game-modal .info-row .info-scroll > * {
+  border-bottom: 2px dashed silver;
+  padding: 5px; }
+
+.game-modal .info-row .info-scroll .btn-title {
+  font-size: 1.2rem;
+  font-weight: bold; }
+
+.game-modal .info-row .info-scroll .toggle-content {
+  margin: 5px;
+  padding: 10px;
+  font-size: .95rem;
+  font-weight: bold;
+  color: #383838;
+  background-color: #dadada; }
+
+.game-modal .info-row .info-scroll .toggle-content:empty {
+  margin: 0;
+  padding: 0; }
+
+.game-modal .info-row .info-scroll .toggle-content p {
+  margin-bottom: 0; }
+
+@media screen and (max-width: 992px) {
+  .game-modal .info-row .info-scroll .btn-title {
+    font-size: 1.05rem; }
+
+  .game-modal .info-row .info-scroll .toggle-content {
+    font-size: .9rem; } }
+@media screen and (max-width: 575px) {
+  .game-modal .info-row .info-scroll .btn-title {
+    font-size: .95rem; }
+
+  .game-modal .info-row .info-scroll .toggle-content {
+    font-size: .85rem; } }
+.game-modal .info-row .pagination {
+  justify-content: center;
+  padding: 1rem 0 0;
+  margin-bottom: 0;
+  width: 100%;
+  order: 2; }
+
+.game-modal .info-row .pagination a {
+  white-space: nowrap; }
+
+.game-modal .info-row .pagination + .info-scroll {
+  order: 1; }
+
+@media screen and (max-width: 992px) {
+  .game-modal .info-row .pagination {
+    justify-content: flex-start;
+    overflow-x: auto;
+    order: 1;
+    padding: 0 0 1rem; }
+
+  .game-modal .info-row .pagination + .info-scroll {
+    order: 2; } }
+.game-modal #log-draw .modal-body-bottom table {
+  min-width: 480px; }
+
+.game-modal #log-draw .modal-body-bottom table tbody tr td > * {
+  display: inline-block;
+  color: #fff;
+  width: 22px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 3px; }
+
+.game-modal #log-draw .modal-body-bottom table th:nth-of-type(1), .game-modal #log-draw .modal-body-bottom table td:nth-of-type(1), .game-modal #log-draw .modal-body-bottom table .modal-fixed-title li:nth-of-type(1) {
+  width: 200px; }
+
+.game-modal #log-draw .modal-body-bottom table th:nth-of-type(2), .game-modal #log-draw .modal-body-bottom table td:nth-of-type(2), .game-modal #log-draw .modal-body-bottom table .modal-fixed-title li:nth-of-type(2) {
+  width: 280px; }
+
+.game-modal #log-report .modal-body-bottom table {
+  min-width: 760px; }
+
+.game-modal #log-report .modal-body-bottom table th:not(:nth-of-type(1)):not(:nth-of-type(2)), .game-modal #log-report .modal-body-bottom table td:not(:nth-of-type(1)):not(:nth-of-type(2)) {
+  text-align: right; }
+
+.game-modal #log-report .modal-body-bottom table td {
+  font-size: 14px; }
+
+.game-modal #log-report .modal-body-bottom th:nth-of-type(1), .game-modal #log-report .modal-body-bottom td:nth-of-type(1), .game-modal #log-report .modal-body-bottom .modal-fixed-title li:nth-of-type(1) {
+  width: 200px; }
+
+.game-modal #log-report .modal-body-bottom th:nth-of-type(2), .game-modal #log-report .modal-body-bottom td:nth-of-type(2), .game-modal #log-report .modal-body-bottom .modal-fixed-title li:nth-of-type(2) {
+  width: 200px; }
+
+.game-modal #log-report .modal-body-bottom th:nth-of-type(3), .game-modal #log-report .modal-body-bottom td:nth-of-type(3), .game-modal #log-report .modal-body-bottom .modal-fixed-title li:nth-of-type(3) {
+  width: 120px; }
+
+.game-modal #log-report .modal-body-bottom th:nth-of-type(4), .game-modal #log-report .modal-body-bottom td:nth-of-type(4), .game-modal #log-report .modal-body-bottom .modal-fixed-title li:nth-of-type(4) {
+  width: 120px; }
+
+.game-modal #log-report .modal-body-bottom th:nth-of-type(5), .game-modal #log-report .modal-body-bottom td:nth-of-type(5), .game-modal #log-report .modal-body-bottom .modal-fixed-title li:nth-of-type(5) {
+  width: 120px; }
+
+.game-modal [class*="c_"] {
+  color: #000; }
+
+.game-modal .car0, .game-modal .car100, .game-modal .c_0, .game-modal .c_100 {
+  color: #fff;
+  background-color: #131313; }
+
+.game-modal .car1, .game-modal .c_1 {
+  color: #fff;
+  background-color: #f9a825; }
+
+.game-modal .car2, .game-modal .c_2 {
+  color: #fff;
+  background-color: #0288d1; }
+
+.game-modal .car3, .game-modal .c_3 {
+  color: #fff;
+  background-color: #5E5C5C; }
+
+.game-modal .car4, .game-modal .c_4 {
+  color: #fff;
+  background-color: #E65100; }
+
+.game-modal .car5, .game-modal .c_5 {
+  color: #fff;
+  background-color: #0097A7; }
+
+.game-modal .car6, .game-modal .c_6 {
+  color: #fff;
+  background-color: #273194; }
+
+.game-modal .car7, .game-modal .c_7 {
+  color: #fff;
+  background-color: #A1A7B1; }
+
+.game-modal .car8, .game-modal .c_8 {
+  color: #fff;
+  background-color: #B71C1C; }
+
+.game-modal .car9, .game-modal .c_9 {
+  color: #fff;
+  background-color: #750000; }
+
+.game-modal .car10, .game-modal .c_10 {
+  color: #fff;
+  background-color: #00695C; }
+
+.game-modal .c_111, .game-modal .c_113, .game-modal .c_115, .game-modal .c_121 {
+  background-color: #B71C1C;
+  color: #fff;
+  font-weight: bold; }
+
+.game-modal .c_112, .game-modal .c_114, .game-modal .c_116, .game-modal .c_122 {
+  background-color: #0288d1;
+  color: #fff;
+  font-weight: bold; }
+
+.game-modal .cell-2:not(.c_111):not(.c_112):not(.c_113):not(.c_114):not(.c_115):not(.c_116):not(.c_121):not(.c_122):not(.c_) {
+  background-color: #B71C1C;
+  color: white;
+  box-shadow: inset 0 0 10px 0 rgba(23, 23, 23, 0.48); }
+
+.top-title.en_US span:not(.en_US) {
+  display: none; }
+
+.top-title.zh_TW span:not(.zh_TW) {
+  display: none; }
+
+.top-title.zh_CN span:not(.zh_CN) {
+  display: none; }
+
+.top-title.vi_VN span:not(.vi_VN) {
+  display: none; }
+
+.top-title.ja_JP span:not(.ja_JP) {
+  display: none; }
+
+.option-button.en_US b:not(.en_US) {
+  display: none; }
+
+.option-button.zh_TW b:not(.zh_TW) {
+  display: none; }
+
+.option-button.zh_CN b:not(.zh_CN) {
+  display: none; }
+
+.option-button.vi_VN b:not(.vi_VN) {
+  display: none; }
+
+.option-button.ja_JP b:not(.ja_JP) {
+  display: none; }
+
+.input-block.en_US span:not(.en_US) {
+  display: none; }
+
+.input-block.zh_TW span:not(.zh_TW) {
+  display: none; }
+
+.input-block.zh_CN span:not(.zh_CN) {
+  display: none; }
+
+.input-block.vi_VN span:not(.vi_VN) {
+  display: none; }
+
+.input-block.ja_JP span:not(.ja_JP) {
+  display: none; }

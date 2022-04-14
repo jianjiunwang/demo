@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+    </head>
+<style>
+.x-nav {
+    padding: 0 20px;
+    position: relative;
+    z-index: 99;
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 39px;
+    height: 39px;
+    overflow: hidden;
+    background: #eee;
+}
+	.layui-card-body{
+		padding: 0px;
+	}
+.layui-card-body .layui-table {
+    margin: auto;
+}
+.layui-col-md12{
+	background-color: #fff;
+	}
+.layui-card {
+    margin-bottom: 15px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 0px 0px 0 rgb(0 0 0 / 5%);
+}
+.edit{
+	width:120px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background: #00A69E;
+	margin: 10px auto;
+	}
+	.edit a{
+		display:block;
+		color: #fff;
+	}
+#lv span{
+		padding: 5px 10px;
+	border-radius: 56px
+	}
+.f_tt{
+		color:#FFFFFF;
+		background: #4BBFAF;
+	}
+button, input, optgroup, option, select, textarea{
+		width:120px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background: #00A69E;
+	margin: 10px auto;
+	}
+    .layui-layer-iframe {
+        width: 90% !important;
+        height: fit-content !important;
+    }
+
+    @media screen and (min-width: 1024px) {
+
+        .layui-layer-iframe {
+            width: 300px !important;
+            height: fit-content !important;
+        }
+
+    }
+</style>
+    <body>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <table class="layui-table layui-form">
+
+                                    <tr>
+                                        <th class="f_tt"  style="text-align:center;">會員帳號</th>
+                                        <th style="text-align:center;">{$name}</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt" style="text-align:center;">驗證</th>
+
+                                        <th id="lv" style="text-align:center;">
+                                        {switch $is_check }
+                                            {case 0}<span style="text-align:center; color: white; background-color: #5b5b5b;">未驗證</span>{/case}
+                                            {case 1}<span style="text-align:center; color: white; background-color: #00cc00;">已驗證</span>{/case}
+                                        {/switch}
+                                        </th>
+
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt" style="text-align:center;">會員姓名</th>
+                                        <th  style="text-align:center;">{$realname}</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt" style="text-align:center;">聯絡電話</th>
+                                        <th style="text-align:center;">{$phone}</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt" style="text-align:center;">銀行名稱</th>
+                                        <th style="text-align:center;">{$bank_name}</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt" style="text-align:center;">分行名稱</th>
+                                        <th style="text-align:center;">{$bank_branch_name}</th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt" style="text-align:center;">銀行帳號</th>
+                                        <th style="text-align:center;">{$bank_card}</th>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <th class="f_tt" style="text-align:center;">證件上傳</th>
+                                        <th style="text-align:center;"><img src="{$id_card}" alt="" width="100"></th>
+                                    </tr>
+                                    <tr style="display: none;">
+                                        <th class="f_tt" style="text-align:center;">存摺封面</th>
+                                        <th style="text-align:center;"><img src="{$post_card}" alt="" width="100"></th>
+                                    </tr>
+                            </table>
+                        </div>
+                        {if condition="($bank_card == '')"}
+                        <div class="edit">
+                            <a  href="{:url('index/index/update_userinfo')}?i=">編輯會員資訊</a>
+                        </div>
+                        {/if}
+                        <div class="edit">
+                            <a  href="{:url('index/index/update_psw')}?i=">修改密碼</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+      layui.use(['laydate','form'], function(){
+        var laydate = layui.laydate;
+        var  form = layui.form;
+
+
+        // 监听全选
+        form.on('checkbox(checkall)', function(data){
+
+          if(data.elem.checked){
+            $('tbody input').prop('checked',true);
+          }else{
+            $('tbody input').prop('checked',false);
+          }
+          form.render('checkbox');
+        }); 
+        
+
+      });
+
+    </script>
+</html>

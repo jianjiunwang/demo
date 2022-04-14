@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+        <script src="//cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+        <script src="//cdn.staticfile.org/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    </head>
+    <style>
+        .recss{
+            display: block;
+            text-align: center; 
+            background-color:#eee;
+            color: black;
+            width: 25%;
+            border-radius:10px;
+            border:2px #ccc solid;
+            float: right;
+        }
+        .x-nav {
+            padding: 0 6px;
+            position: relative;
+            z-index: 99;
+            border-bottom: 1px solid #e5e5e5;
+            line-height: 39px;
+            height: 39px;
+            overflow: hidden;
+            background: #eee;
+        }
+	.layui-card-body{
+		padding: 0px;
+	}
+.layui-card-body .layui-table {
+    margin: auto;
+}
+.layui-col-md12{
+	background-color: #fff;
+	}
+.layui-card {
+    margin-bottom: 15px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 0px 0px 0 rgb(0 0 0 / 5%);
+}
+.edit{
+	width:120px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background: #00A69E;
+	margin: 10px auto;
+	}
+.edit {
+		display:block;
+		color: #fff;
+	}
+#lv span{
+		padding: 5px 10px;
+	border-radius: 56px
+	}
+.f_tt{
+		color:#FFFFFF;
+		background: #4BBFAF;
+	}
+        button, input, optgroup, option, select, textarea {
+            font-family: inherit;
+            font-size: inherit;
+            font-style: inherit;
+            font-weight: inherit;
+            outline: 0;
+            border: 1px solid #ddd;
+            line-height: 35px;
+            background: #eee;
+            color: #4BBFAF;
+            width: 94%;
+            padding-left: 5px;
+        }
+.record{
+	
+		}
+        .recss {
+            display: block;
+            text-align: center;
+            background-color: #fff;
+            color: #555;
+            width: 120px;
+            border-radius: 0px;
+            border: 1px #ccc solid;
+            float: right;
+            margin: 1px 0;
+            line-height: 35px;
+            font-size: 14px;
+        }
+        .x-admin-sm .layui-table td, .x-admin-sm .layui-table th {
+            padding: 5px;
+            font-size: 14px;
+        }
+    </style>
+    <body>
+        <div class="x-nav">
+            
+                <div class="record">
+                    <a class="recss" href="{:url('index/index/rd_record?s=d')}?i=">提款記錄 ➥</a>
+                </div>
+           
+        </div>
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                           
+                            <table class="layui-table layui-form">
+                                    <tr>
+                                        <th class="f_tt" style="text-align:center;">提款金額</th>
+                                        <th style="text-align:center;"><input placeholder="請輸入提款金額" id="amount"></th>
+                                    </tr>
+                                    <tr>
+                                        <th class="f_tt" style="text-align:center;">提款安全鎖</th>
+                                        <th style="text-align:center;"><input placeholder="請輸入安全鎖" id="qk_pwd" type="password"></th>
+                                    </tr>
+                                    
+                            </table>
+                        </div>
+
+                        <div class="edit"  onclick="post_draw();">送出
+                        </div>
+
+                    </div>
+                    <div>
+                        <h3 style="color: rgb(36, 60, 194);">溫馨提示</h3>
+                        <div style="margin: 10px 0 10px 0;">
+                            <div style="color: rgb(17, 179, 243);">交易戶首次提款請洽客服進行資料核對</div>
+                            <div style="color: rgb(17, 179, 243);">交易戶入金後不得在沒有進行任何交易的情況下申請提款,請您至少進行一筆任意金額的交易再進行提款</div>
+                            <div style="color: rgb(17, 179, 243);">提款後您申請的提款金額將由電腦系統於24小時內處理</div>
+                            <div style="color: rgb(17, 179, 243);">交易戶提款一律由總公司以電匯方式進行發放發款</div>
+                            <div style="color: rgb(17, 179, 243);">實際到帳時間視地區不同為1~3日,若超出時間請您截圖您的提款紀錄詢問客服人員 我們將會立即處理</div>
+                        </div>
+                        
+                        <div style="color: rgb(17, 179, 243);">提款遇到困難？聯繫<a style="color: blue;" href="{$slink}">客服人員</a>獲得幫助</div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+        layui.use(['laydate','form'], function(){
+            var laydate = layui.laydate;
+            var  form = layui.form;
+
+            // 监听全选
+            form.on('checkbox(checkall)', function(data){
+
+                if(data.elem.checked){
+                    $('tbody input').prop('checked',true);
+                }else{
+                    $('tbody input').prop('checked',false);
+                }
+                form.render('checkbox');
+            }); 
+
+        });
+
+        function post_draw(){
+            var amount = $('#amount').val();
+            var qk_pwd = $('#qk_pwd').val();
+            
+            if(amount.length == 0){
+                alert("金額不得為空");
+                return false;
+            };
+
+            if(qk_pwd.length == 0){
+                alert("請輸入提款安全鎖");
+                return false;
+            };
+
+            var data = { amount: amount, qk_pwd: qk_pwd};
+
+            $.ajax({  
+                url: "{:url('index/post_draw')}",
+                type: 'POST',
+                data: data,
+                async : false,
+                dataType: 'JSON',
+
+                success:function(data) {
+
+                    if (data.type == 1) {
+                        alert(data.data);
+                        window.location.href="{:url('index/index/rd_record?s=d')}?i=";
+                    }else if (data.type == 2){
+                        alert(data.data);
+                        window.location.reload();
+                    }else if(data.type == 3){
+                        alert(data.data);
+                        parent.location.reload();
+                    }
+
+                },error:function(jqXHR) {
+                    alert("送出提款申請失敗2");
+                },
+
+            });
+
+        };
+
+    </script>
+</html>

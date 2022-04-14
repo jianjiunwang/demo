@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta version="10">
+  <title>Fchange</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+
+  <link href="upload/1574087439a0a1ee6b522055df3b9491aaa9a38c60" rel="icon" type="image/x-icon">
+
+  <link rel="stylesheet" href="//cdn.staticfile.org/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.staticfile.org/font-awesome/5.9.0/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.staticfile.org/sweetalert/1.1.3/sweetalert.min.css">
+  <link rel="stylesheet" href="//cdn.staticfile.org/jqueryui/1.12.1/themes/base/jquery-ui.css">
+  <script src="//cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+  <script src="//cdn.staticfile.org/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="//cdn.staticfile.org/popper.js/1.14.3/umd/popper.min.js"></script>
+  <script src="//cdn.staticfile.org/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  <script src="//cdn.staticfile.org/sweetalert/1.1.3/sweetalert.min.js"></script>
+  <script src="//cdn.staticfile.org/moment.js/2.24.0/moment.min.js"></script>
+  <script src="//cdn.staticfile.org/Chart.js/2.8.0/Chart.min.js"></script>
+  <script src="//cdn.staticfile.org/hammer.js/2.0.8/hammer.min.js"></script>
+  <script src="//cdn.staticfile.org/chartjs-plugin-zoom/0.6.6/chartjs-plugin-zoom.min.js"></script>
+  <script src="/js/bopt/chartjs-plugin-streaming.js"></script>
+  <script src="//cdn.staticfile.org/chartjs-plugin-annotation/0.5.7/chartjs-plugin-annotation.min.js"></script>
+
+  <link rel="stylesheet" href="/css/font.scss?c218dee82159d43a3f108c4bcbf60bed">
+  <link rel="stylesheet" href="/css/binary6.css?c218dee82159d43a3f108c4bcbf60bed">
+	<link rel="stylesheet" href="/css/binary6.css?c218dee82159d43a3f108c4bcbf60bed">
+	<link rel="stylesheet" href="/css/pocket.css">
+  <script src="/js/_common_2.js?c218dee82159d43a3f108c4bcbf60bed71"></script>
+  <script src="/static/layui/layui.js" charset="utf-8"></script>
+  <style>
+
+  </style>
+</head>
+<style>
+	#game{
+	
+	}
+	.layui-layer-title{
+		background-color: steelblue
+	}
+@media screen and (max-width: 1024px){
+	header .header-link .link-block .nav-list .view-item-amplitude span{
+		padding: 0 5px;
+	}
+	header {
+    width: 100%;
+    height: auto;
+}
+	#inside-page .game-box {
+    height: calc(100% - 160px - 124px);
+			background-image: url(../img/img/earth.png);
+		    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+	.menu{
+		display: none;
+		position: fixed;
+    width: 50%;
+    right: 0;
+    background: #000;
+    padding: 10px 5px;
+    transition: all ease .3s;
+    z-index: 2;
+    box-shadow: inset 0 0 0 1px #000, inset 0 0 0 2px #5f5f5f, inset 0 0 0 5px #000, inset 0 0 0 6px #5f5f5f;
+    top: 50px;
+	}
+	.game-info {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 0px 10px;
+		color: #fff;
+		    border-bottom: 1px solid #555;
+}
+	.name {
+    display: inline-block;
+    border: 1px solid #fdfeff;
+    padding: 5px;
+    transition: all ease .2s;
+    position: relative;
+}
+	.info-item{
+		    border: 1px solid #555;
+    padding: 5px;
+    text-align: center;
+    margin: 5px 10px;
+	}
+	header .top-header{
+	display: none
+	}
+		.menu_btn{
+				width: 50px;
+				height: 50px;
+				display: flex;
+			}
+	.menu_btn img{
+		width: 30px;
+		height: 30px;
+		    margin: 10px;
+	}
+	#m_id, #m_money{
+		border: none;
+	}
+	.fa, .fas {
+		margin-right: 5px;
+	}
+	.header-link{
+		height: 62px;
+		
+	}
+	
+	
+	header .header-link .link-block .nav-list.now{
+	    height: 62px;
+    border-radius: 5px;
+    border: 1px solid #656f7b;
+    margin: 0 5px;	
+		    display: flex;
+    flex-flow: column;
+	}
+	header .header-link .link-block .nav-list{
+	height: 62px;
+		border-radius: 5px;
+	display: flex;
+	margin: 0 5px;	
+    flex-flow: column;
+	border: 1px solid #656f7b;
+		background: #2a2a31
+	}
+	header .header-link .link-block .nav-list > *{
+		    width: 100%;
+    height: 20px;
+    line-height: 20px;
+		text-align: center
+	}
+	header .header-link .link-block .nav-list .nav-name{
+		min-width:120px;
+	}
+ .control-box .button-row {
+    width: 100%;
+    display: block;
+    height: 150px;
+}
+	#inside-page .control-box{
+width: 100%;
+    height: 160px;
+		border: none;
+		background: #000614;
+	}
+	.control-box .group-item2 {
+    display: block;
+    flex-direction: row;
+    height: 110px;
+    width: 40%;
+    float: left;
+    margin-left: 0;
+    margin-top: 5px;
+    box-sizing: border-box;
+    padding: 0 5px;
+		display: none
+}
+#inside-page .button-row .button-item {
+    display: block;
+    height: 100%;
+    margin: 0;
+    width: 48%;
+    float: left;
+}
+.control-box .button-row .group-merge {
+    display: block;
+    height: 110px;
+    width: 100%;
+    float: left;
+    margin-left: 0;
+    margin-top: 5px;
+    box-sizing: border-box;
+    padding-right: 5px;
+}
+#inside-page .button-row .button-item label {
+    box-sizing: border-box;
+    border: 1px solid #656f7b;
+    height: 50px;
+    color: #b9b9b9;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 5px;
+    cursor: pointer!important;
+    margin: 0 0 5px;
+    background-color: #2a2a31!important;
+	width: 100%!important;
+}
+	#inside-page .button-row .button-item label + label{
+		margin-left: 0;
+	}
+	#game_2{
+		float: right!important;
+	}
+	#upp {
+    background-image: linear-gradient(to bottom,#4fc83d 0%,#3da44f 100%);
+	border-radius: 5px;
+		
+}
+	#loww {
+    background-image: linear-gradient(to bottom,#ff3e1f 0%,#f1372e 100%);
+	border-radius: 5px;
+}
+	#inside-page .money-rank {
+        width: 49%;
+    height: 50px;
+    border-radius: 5px;
+    padding: 0;
+		
+}
+	.control-box .money-rank .rank-box {
+    border: 1px solid #656f7b;
+    border-top: 1px solid #656f7b;
+    border-radius: 5px;
+}
+	#inside-page .money-rank .rank-box .input-block input {
+    width: 100%;
+    height: 100%;
+		padding: 0
+}
+	.correct11{
+		width: 100%;
+    height: 50px;
+	    border: 1px solid rgba(231,206,69,.9);
+    color: #c9b545;
+    background-color: rgba(85,84,59,.7);
+    transition: all ease .2;
+		border-radius: 5px;
+	}
+	}
+	
+	
+	
+	
+	
+	
+	@media screen and (min-width: 1024px){
+		#menu_time{
+			display: none
+		}
+		#m_id, #m_money{
+		display: none;
+	}
+			.menu_btn{
+				width: 50px;
+				height: 50px;
+				display: none;
+			}
+		.menu{
+			display: flex
+		}
+		header .top-header{
+			
+		}
+header{
+width: 370px;
+    padding-right: 20px;
+	}
+	main{
+width: calc(100% - 370px);
+	}
+header .header-link .top-title{
+		line-height: 32px;
+	}
+header .header-link .link-block{
+	background-color: #000614;
+    height: auto;
+    padding: 0;
+    min-height: 600px;
+    overflow: auto;
+	}
+	header .header-link .link-block .nav-list.now{
+	border-color: transparent;
+		    padding: 8px 0;
+	}
+header .top-header .info .name{
+	font-size:14px!important}
+
+.game-info{
+	display: flex;
+    width: 100%;
+	color: #fff;
+	padding: 7px 10px;
+	}
+	.name{
+		    display: inline-block;
+    border: 1px solid #fdfeff;
+    padding: 5px;
+    transition: all ease .2s;
+    position: relative;
+	}
+	.name_a{
+		color: #fff
+	}
+	.info-item{
+		padding: 5px;
+		margin-left: 10px;
+	}
+	.fa, .fas{
+		margin:0 5px;
+    	color: #87CEFA;
+	}
+.lang-row {
+    border-radius: 4px;
+    background-color: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+    padding: 2px 5px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: -apple-system,BlinkMacSystemFont,"Microsoft Jheng Hei","PingFang","蘋方","微軟正黑體","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important;
+    text-align: center;
+    outline: none;
+    transition: all ease .2s;
+    margin-right: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+	cursor: pointer;}
+header .header-link .link-block .nav-list .view-item-amplitude[data-amplitude="up"] span {
+  background-color: #f6293b; }
+
+header .header-link .link-block .nav-list .view-item-amplitude[data-amplitude="down"] span {
+  background-color: #1cbe52; }
+	header .header-link .link-block .nav-list > *{
+text-align: center;
+	}
+	header .header-link .link-block .nav-list .view-item-amplitude span{
+		padding: 0;
+		line-height: 30px;
+		font-weight: bold;
+	}
+	header .header-link .bottom-time{
+		padding: 0;
+		text-align: center;
+		width: 350px;
+		color: #747e80;
+		line-height: 42px;
+	}
+	#inside-page .game-box{
+		height: calc(100% - 180px);
+		background-image: url(../img/img/earth.png);
+		    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+		    padding: 10px 0 15px;
+	}
+		  	#inside-page{
+		padding: 0;
+		width: 100%;
+	}
+#inside-page .control-box{
+	border:none;
+	    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 130px;
+    background-color: #000614;
+	padding: 0;
+	}
+	#inside-page .button-row{
+		width: 100%; flex-flow: column;
+		    flex-direction: row;
+		       align-items: center;
+	}
+	#inside-page .time-block{
+		    flex-direction: row;
+		width: auto;
+	}
+
+	#inside-page .money-rank{
+		   flex-direction: row;
+		width:180px;
+		height: auto
+	}
+.control-box .money-rank .rank-box{
+border-top:1px solid #656f7b;
+	    margin: 5px 0;
+    border-radius: 5px;
+			  }	
+.rank-box span{
+			text-align: center;
+    width: 100%;	  
+			  }
+#inside-page .money-rank .rank-box .input-block input{
+	background: #333;
+    color: #666;	  
+			  }
+	.group-item1 {
+    display: flex;
+    flex-direction: column;
+		margin-left: 10px;}
+.group-item2 .button-item {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    margin-left: 5px;
+}
+	.control-box .group-item3 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 110px;
+    margin-left: 5px;
+}
+	.group-merge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+}
+.control-box {
+    width: 100%;
+    height: 130px;
+    background-color: #2a2a31;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: relative;
+}
+#inside-page .time-block {
+    background-color: #2a2a31;
+    border-radius: 4px;
+    border: 1px solid #656f7b;
+    padding: 5px 10px;
+    width: 190px;
+    position: relative;
+    box-sizing: border-box;
+    height: 110px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#inside-page .button-row .button-item {
+	flex-flow: column;
+    flex-direction: row;
+    width: auto;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+	margin-left: 5px;
+	padding: 0;
+	justify-content: inherit;
+			  }
+   #inside-page .button-row  .group-item2 .button-item label {
+    box-sizing: border-box;
+    border: 1px solid #656f7b;
+    height: 50px;
+    color: #b9b9b9;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 5px;
+    cursor: pointer!important;
+    margin: 10px 0 0;
+    background-color: #2a2a31;
+	   width: auto
+}
+			  .control-box .group-item3 label.btn-up i {
+    font-size: 20px;
+    color: #000;
+    font-style: normal;
+    padding: 5px 0;
+    font-weight: 600;
+}
+			  #inside-page .money-rank .rank-box .input-block{
+				  height: 110px;
+			  }		  
+			  #upp{
+				  border-radius: 5px;
+				  background-image: linear-gradient(to bottom,#4fc83d 0%,#3da44f 100%);
+			  }
+			  #loww{
+				  border-radius: 5px;
+				    background-image: linear-gradient(to bottom,#ff3e1f 0%,#f1372e 100%);  
+			  }
+			  .correct11{
+				      flex: 1;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: -apple-system,BlinkMacSystemFont,microsoft jheng hei,pingfang,蘋方,微軟正黑體,segoe ui,Roboto,helvetica neue,Arial,sans-serif,apple color emoji,segoe ui emoji,segoe ui symbol!important;
+    font-weight: 700;
+    padding: 10px 0;
+    border: 1px solid rgba(231,206,69,.9);
+    color: #c9b545;
+    background-color: rgba(85,84,59,.7);
+    transition: all ease .2s;
+    cursor: pointer;
+			  }
+			  .submit-group {
+    width: 100px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+	}
+.coin_choose{
+	display: none;
+	    position: absolute;
+    left: 9px;
+    top: 44px;
+    background: #000;
+    border: 1px solid #555;
+    width: 145px;
+    z-index: 999;
+	}
+	.coin_choose a{
+	    color: #fff;
+    display: block;
+    line-height: 35px;
+    border-bottom: 1px solid #eee;
+    width: 80%;
+    margin: 0 auto;
+	}
+	.coin_choose a div{
+		text-align: center
+	}
+	.coin_choose a:last-child{
+		border-bottom: 0px solid #eee;
+	}
+		#upp, #loww {
+opacity: 1
+}
+	#upp:hover, #loww:hover, #upp:active, #loww:active{
+		opacity: 0.7
+	}
+#game{ }
+</style>
+<body>
+  <input id="auth" type="hidden" value="ws://ws.fchange166.xyz:2380/?uid={$uid}&session={$Think.session.session}">
+  <input id="ws" type="hidden" data-game="Bopt{$gameid}" data-path="/views/cache/Bopt{$gameid}_101.html" style="width:100%;">
+  <textarea id="ws-hint"
+	hidden>{"111":"\u9ad8","112":"\u4f4e","113":"\u55ae","114":"\u96d9","124":"\u6f32","125":"\u8dcc","168":"\u53cd"}</textarea>
+  <div id="page">
+	<div class="body-block">
+		<div class="game-info list_box">
+			<div class="name" style="" onClick="$('.coin_choose').toggle()">--<p>▼</p></div>
+            <div class="coin_choose">
+			{foreach $type as $key=>$vo }
+			<a href="/bopt{$vo.typeid}"  data-name="{$key}">
+			  <div >{$vo.title} </div>
+			</a>
+			{/foreach}
+			
+			</div>
+			<div class="bottom-time">
+			<div class="game-time" id="menu_time">目前時間：<span></span></div>
+		  </div>
+			<div class="menu">
+				<div class="info-item" id="m_id"><div class="name_a">帳號 : {$username}</div></div>
+				<div class="info-item" id="m_money"><div class="name_a">資金：$<span name="wallet">--</span>
+</div></div>
+			<div class="info-item" onclick="goto('notice');"><span class="fas fa-exclamation-circle"></span>網站公告</div>
+			<div class="info-item" onclick="goto('userinfo');"><span class="fas fa-user-circle"></span>會員資訊</div>
+			<div class="info-item change-txt" onclick="goto('orderlist');"><span class="fas fa-history"></span>交易紀錄</div>
+			<div class="info-item change-txt" onclick="goto('hiscy');"><span class="fas fa-industry"></span>歷史紀錄</div>
+			<div class="info-item" style="display: none;" onclick="goto('explain');"><span class="fab fa-quora"></span>交易說明</div>
+			<div class="info-item" onclick="goto('drawing');"><span class="fas fa-university"></span>提款專區</div>
+			<div class="info-item" style="display: none;" onclick="goto('recharge');"><span class="fas fa-download"></span>存款專區</div>
+			<div class="info-item" onclick="goto('rd_record');"><span class="fa fa-building"></span>資金記錄</div>
+			<div class="info-item" onclick="window.open('{$slink}')"><span class="fa fa-users"></span>聯絡客服</div>
+			<div class="info-item" onclick="logout();" ><span class="fab"></span>登出</div></div>
+			<div class="menu_btn" onclick="$('.menu').toggle()">
+			<img src="../img/img/menu.png"></div>
+		  </div>
+	  <header class="">
+		<div class="top-header">
+<div class="logo">
+<img src="/img/binary6/logo.png" alt="binary">
+</div>
+<div class="info">
+<div class="name_a">
+帳號 : {$username}
+</div>
+
+<div class="name_a">
+資金：$
+<span name="wallet">--</span>
+</div>
+<div class="wallet" style=" display:none">
+資金：$
+<span name="wallet">--</span>
+</div>
+</div>
+<div class="lang-row" style=" display: none">
+<button class="dropdown-toggle nav-footer-link" type="button" data-toggle="dropdown">
+<span class="lang-img zh_TW"></span>
+</button>
+<div class="dropdown-menu">
+
+<a class="dropdown-item" href="?lang=zh_TW"><span class="lang-img zh_TW"></span>繁體中文</a>
+
+</div>
+</div>
+</div>
+		  
+		  
+		  
+		  
+		  
+		<div class="header-link">
+		  <div class="top-title zh_TW">
+			<span class="zh_TW">名稱</span>
+			<span class="zh_TW">現價</span>
+			<span class="zh_TW" >時間</span>
+			<span class="zh_CN">名称</span>
+			<span class="zh_CN">现价</span>
+			<span class="en_US">name</span>
+			<span class="en_US">Current price</span>
+			<span class="vi_VN">Tên</span>
+			<span class="vi_VN">Giá hiện tại</span>
+		  </div>
+		  <div class="link-block">
+			{foreach $type as $key=>$vo }
+			<a href="/bopt{$vo.typeid}" class="nav-list" data-name="{$key}">
+			  <div class="nav-name">
+				{$vo.title}
+			  </div>
+			  <div class="view-item-amplitude" data-amplitude>
+				<span class="gw view-item-data">--</span>
+			  </div>
+			  <div class="view-item-amplitude" data-amplitude>
+				<div class="gw view-item-time">--</div>
+			  </div>
+			</a>
+			{/foreach}
+
+
+
+		  </div>
+		  <div class="bottom-time">
+			<div class="game-time">目前時間：<span></span></div>
+		  </div>
+		</div>
+	  </header>
+	  <main class="">
+
+		<input id="coin1" class="coin-control" type="hidden" value="10" hidden>
+
+		<input id="coin2" class="coin-control" type="hidden" value="50" hidden>
+
+		<input id="coin3" class="coin-control" type="hidden" value="100" hidden>
+
+		<input id="coin4" class="coin-control" type="hidden" value="1000" hidden>
+
+		<input id="coin5" class="coin-control" type="hidden" value="10000" hidden>
+
+		<input id="coin6" class="coin-control" type="hidden" value="50000" hidden>
+
+		<input id="coin7" class="coin-control" type="hidden" value="100000" hidden>
+
+		<script src="/js/bopt/init.js?c218dee82159d43a3f108c4bcbf60bed14"></script>
+		<script src="/js/_canvas/boptb.js"></script>
+		<textarea id="chart-color" hidden>
+{
+"labelFC":"rgba(0, 0, 0, 1)",
+"sLabelBC":"rgba(255,253,148,0.4)",
+"startLabelBC":"rgba(255, 253, 148, 1)",
+"startLabelBCM":"rgba(255, 253, 148, 1)",
+"startDash":[0, 0],
+"pLabelBC":"rgba(255,253,148,0.4)",
+"stopLabelBC":"rgba(255, 253, 148, 1)",
+"stopLabelBCM":"rgba(255, 253, 148, 1)",
+"stopDash":[0, 0],
+"boxBC":"rgba(255, 253, 148, 0.2)",
+"gameBC":"rgba(254, 183, 57, 0.8)",
+"gameLabelBC":"rgba(254, 183, 57, 0.8)",
+"gameLabelFC":"rgba(16, 21, 27, 0.9)",
+"chartBorder":"rgba(52, 122, 139, 1)",
+"chartColor1":"rgba(52, 122, 139, 0.8)",
+"chartColor2":"rgba(52, 122, 139, 0.2)",
+"xGridLines":"rgba(55, 55, 55, 1)",
+"xGridLinesZero":"rgba(55, 55, 55, 1)",
+"xGridFont":"rgba(255, 255, 255, 1)",
+"yGridLines":"rgba(55, 55, 55, 1)",
+"yGridLinesZero":"rgba(55, 55, 55, 1)",
+"yGridFont":"rgba(255, 255, 255, 1)",
+}
+</textarea>
+		  <style>
+		
+		  </style>
+		<div data-bopt id="inside-page">
+
+
+
+
+
+
+
+
+			<div class="game-box" id="game">
+				<canvas id="chart-view"></canvas>
+				<button id="resetZoom"><i class="fas fa-angle-double-right fa-1x"></i></button>
+				<span class="game-name" unselectable="on"></span>
+				<span class="now-data"><b></b><i></i></span>
+			</div>
+
+
+			<div style=" display:none">
+				<button style="margin-top: 10px; background-color: #1bbeb2; color: white;" onclick="goto('orderlist');">交易紀錄</button>
+			</div>
+
+
+
+
+
+			<div class="control-box">
+				<form action="bet" method="post" target="_blank" style="display: block;">
+					
+					
+					
+					<div class="button-row" >
+						<div class="group-item1">
+						<div class="time-info">
+							<div class="time-row time-row1">
+								
+									<span>交易期數</span>
+									<input name="draw_uid" id="draw_uid" readonly>
+								
+							</div>
+							<div class="time-row time-row2">
+								
+									<span>結束購買倒數</span>
+									<div class="time-box">
+										<span id="time">--</span>s
+									</div>
+								
+							</div>
+						</div>
+						</div>
+						<div class="group-item2">
+						<div class="button-item" id="game_1">
+							<label style="display:none;" for="game-1" class="green" >高標<span class="odds">--</span></label>
+							<label  style="display:none;"for="game-2" class="red" >低標<span class="odds">--</span></label>
+							</div>
+						<div class="button-item" id="game_2">
+							<label style="display:none;" for="game-3" class="basis">奇數<span class="odds">--</span></label>
+							<label style="display:none;" for="game-4" class="basis">偶數<span class="odds">--</span></label>
+							<label for="game-7" class="outer option-button zh_TW"  style=" display: none">
+								<b class="zh_TW">反指標</b>
+								<b class="zh_CN">反指标</b>
+								<b class="en_US">反指標</b>
+								<span class="odds">--</span>
+							</label>
+						</div>
+					</div>
+						<div class="group-merge">
+							<div class="group-item3">
+								<label for="game-5" id="upp">漲<span class="odds">--</span></label>
+								<label for="game-6" id="loww">跌<span class="odds">--</span></label>
+							</div>
+					<div class="money-rank">
+						<div class="rank-box">
+							<input type="checkbox" id="add-control" hidden>
+							<div class="add-box" hidden>
+								<button type="button" class="game-coin" data-add>0</button>
+							</div>
+							<div class="input-block zh_TW" style="width:98%;float:left;">
+								<span class="zh_TW">請輸入投注金額</span>
+								<span class="zh_CN">请输入投注金额</span>
+								<span class="vi_VN">Vui lòng nhập số tiền đặt cược</span>
+								<span class="en_US">Please enter the bet amount</span>
+								<label for="add-control" hidden><i class="fas fa-caret-square-up"></i></label>
+								<input type="text" name="totalView" autocomplete="off" value="$100">
+							</div>
+							<input type="text" name="total" autocomplete="off" value="" hidden>
+							<input type="hidden" name="game" value="{$game.id}" hidden>
+						</div>
+						
+					</div>
+							<div class="submit-group">
+							<button class="button correct11" type="submit" >
+							確認
+						</button></div>
+							</div>
+					</div>
+					<input id="game-1" type="checkbox" value="1" name="205_2_111" hidden>
+					<input id="game-2" type="checkbox" value="1" name="205_2_112" hidden>
+					<input id="game-3" type="checkbox" value="1" name="205_3_113" hidden>
+					<input id="game-4" type="checkbox" value="1" name="205_3_114" hidden>
+					<input id="game-5" type="checkbox" value="1" name="205_10_124" hidden>
+					<input id="game-6" type="checkbox" value="1" name="205_10_125" hidden>
+					<input id="game-7" type="checkbox" value="1" name="205_41_168" hidden>
+					
+				</form>
+			</div>
+			<div class="cover">
+				<img src="/img/binary/close.png?c218dee82159d43a3f108c4bcbf60bed" alt="close">
+				<div class="cover-box">
+					<h4>休市中<span>COMING SOON...</span></h4>
+					<div class="cover-text">
+						<h5>交易時間</h5>
+						<p>週一12:00至週五24:00</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+		  function logout() {
+			var datas = {};
+			var locurl = "{:url('/')}?i=";
+			$.ajax({
+			  type: "POST",
+			  url: "{:url('index/index/logout')}?i=",
+			  data: datas,
+			  dataType: "json",
+			  success: function (data) {
+				if (data.type == 1) {
+				  alert(data.data);
+				  if (locurl) {
+					window.location.href = locurl;
+				  } else {
+					return true;
+				  }
+				} else {
+				  alert(data.data);
+				}
+			  }
+			});
+		  }
+		  layui.use(['laydate', 'form'], function () {
+			var laydate = layui.laydate;
+			var form = layui.form;
+			// 监听全选
+			form.on('checkbox(checkall)', function (data) {
+
+			  if (data.elem.checked) {
+				$('tbody input').prop('checked', true);
+			  } else {
+				$('tbody input').prop('checked', false);
+			  }
+			  form.render('checkbox');
+			});
+			//执行一个laydate实例
+			laydate.render({
+			  elem: '#start' //指定元素
+			});
+			//执行一个laydate实例
+			laydate.render({
+			  elem: '#end' //指定元素
+			});
+		  });
+		  function goto(url) {
+			switch (url) {
+			  case "orderlist": var title = '交易紀錄'; var gourl = "{:url('index/index/orderlist')}?i="; break;
+			  case "hiscy": var title = '歷史記錄'; var gourl = "{:url('index/index/hiscy')}?i="; break;
+			  case "notice": var title = '網站公告'; var gourl = "{:url('index/index/notice')}?i="; break;
+			  case "explain": var title = '交易說明'; var gourl = "{:url('index/index/explain')}?i="; break;
+			  case "drawing": var title = '提款'; var gourl = "{:url('index/index/drawing')}?i="; break;
+			  case "recharge": var title = 'VIP入金'; var gourl = "{:url('index/index/recharge')}?i="; break;
+			  case "userinfo": var title = '會員資訊'; var gourl = "{:url('index/index/userinfo')}?i="; break;
+			  case "coinnum": var title = '我的錢包'; var gourl = "{:url('index/index/coinnum')}?i="; break;
+			  case "rd_record": var title = '資金記錄'; var gourl = "{:url('index/index/rd_record?s=r')}?i="; break;
+			}
+			layer.open({
+			  type: 2,
+			  title: title,
+			  shadeClose: true,
+			  shade: 0.8,
+			  area: ['80%', '90%'],
+			  maxmin: true,
+			  content: gourl
+			});
+		  }
+
+		  $(function () {
+			var txt1 = 'Bet ID/Time';
+			var txt2 = 'Bet Content';
+			var txt3 = 'Bet Amount';
+			var txt4 = 'Win/Loss';
+			var flog = 0;
+			var tLang = 'zh_TW';
+			switch (tLang) {
+			  case 'zh_TW':
+				txt1 = '交易編號/時間';
+				txt2 = '交易內容';
+				txt3 = '交易金額';
+				txt4 = '盈虧';
+				flog = 1;
+				break;
+			  case 'zh_CN':
+				txt1 = '交易编号/时间';
+				txt2 = '交易内容';
+				txt3 = '交易金额';
+				txt4 = '盈亏';
+				flog = 1;
+				break;
+			  default:
+			};
+			if (flog) {
+			  $('.change-txt').attr('data-lang1', txt1);
+			  $('.change-txt').attr('data-lang2', txt2);
+			  $('.change-txt').attr('data-lang3', txt3);
+			  $('.change-txt').attr('data-lang4', txt4);
+			}
+		  });
+		</script>
+		<script>
+		  function _gettext(str) {
+			var i18n = {
+			  'Confirm Betting': '確認投注',
+			  'Confirm': '確認',
+			  'Cancel': '取消',
+			  'Bets Accepted': '下注成功',
+			  'Please login first': '請先登入',
+			  'Error': '錯誤',
+			  'Trade Accepted': '交易成功',
+			  'Time until purchase': '最後購買時間',
+			  'Time until expiration': '本期結算時間',
+			  'Final Result': '結算匯率',
+			  'Log out': '登出',
+			};
+
+			return i18n[str] || str;
+		  }
+		</script>
+	  </main>
+	</div>
+	<!-- Modal -->
+	<div class="modal fade game-modal" id="log" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+	  aria-hidden="true">
+	  <div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content">
+		  <div class="modal-header">
+			<h2 class="modal-title"></h2>
+			<button type="button" class="fas fa-times" data-dismiss="modal"></button>
+		  </div>
+		  <div class="modal-body modal-body-sp">
+			<div class="log"></div>
+		  </div>
+		</div>
+	  </div>
+	</div>
+  </div>
+  <script>
+	$(function () {
+	  var game = $('#ws').attr('data-game').toLowerCase();
+	  $('a[href*="' + game + '"]').addClass('now');
+	  $('.game-info .name').text($('.nav-list.now .nav-name').text());
+	  function getTime() {
+		var getNow = new Date();
+		var h = ('0' + getNow.getHours()).slice(-2);
+		var m = ('0' + getNow.getMinutes()).slice(-2);
+		var s = ('0' + getNow.getSeconds()).slice(-2);
+		$('.game-time span').text(h + ':' + m + ':' + s);
+	  } getTime();
+	  setInterval(function () { getTime(); }, 1000);
+	});
+  </script>
+
+</body>
+<style>
+.layui-layer-title {
+	padding: 0 80px 0 20px;
+	height: 42px;
+	line-height: 42px;
+	border-bottom: 1px solid #eee;
+	font-size: 14px;
+	color: #fff;
+	overflow: hidden;
+	background-color:#13c2c2;
+	border-radius: 2px 2px 0 0;
+}
+	
+</style>
+</html>

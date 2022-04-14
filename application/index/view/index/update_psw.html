@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+        <script src="//cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+        <script src="//cdn.staticfile.org/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    </head>
+	<style>
+.x-nav {
+    padding: 0 20px;
+    position: relative;
+    z-index: 99;
+    border-bottom: 1px solid #e5e5e5;
+    line-height: 39px;
+    height: 39px;
+    overflow: hidden;
+    background: #eee;
+}
+	.layui-card-body{
+		padding: 0px;
+	}
+.layui-card-body .layui-table {
+    margin: auto;
+}
+.layui-col-md12{
+	background-color: #fff;
+	}
+.layui-card {
+    margin-bottom: 15px;
+    border-radius: 2px;
+    background-color: #fff;
+    box-shadow: 0 0px 0px 0 rgb(0 0 0 / 5%);
+}
+.edit{
+	width:120px;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	background: #00A69E;
+	margin: 10px auto;
+	}
+.edit {
+		display:block;
+		color: #fff;
+	}
+#lv span{
+		padding: 5px 10px;
+	border-radius: 56px
+	}
+.f_tt{
+		color:#FFFFFF;
+		background: #4BBFAF;
+	}
+button, input, optgroup, option, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    font-style: inherit;
+    font-weight: inherit;
+    outline: 0;
+    border: 1px solid #ddd;
+    line-height: 35px;
+    background: #eee;
+    color: #4BBFAF;
+}
+</style>
+    <body>
+        
+        <div class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <table class="layui-table layui-form">
+                                <tr>
+                                    <th class="f_tt"  style="text-align:center;">舊的登入密碼</th>
+                                    <th style="text-align:center;"><input id="o_password" type="password" style="text-align: center;" value=""></th>
+                                </tr>
+                                <tr>
+                                    <th class="f_tt"  style="text-align:center;">新的登入密碼</th>
+                                    <th style="text-align:center;"><input id="password" type="password" style="text-align: center;" value=""></th>
+                                </tr>
+                                <tr>
+                                    <th class="f_tt"  style="text-align:center;">確認新的登入密碼</th>
+                                    <th style="text-align:center;"><input id="check_password" type="password" style="text-align: center;" value=""></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2"><span style="color: red;">*</span><span>密碼必須為至少6位數的英文和數字</span></th>
+                                    
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="edit" onclick="update_login();">確定
+                        </div>
+
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <table class="layui-table layui-form">
+                                <tr>
+                                    <th class="f_tt"  style="text-align:center;">舊的安全鎖</th>
+                                    <th style="text-align:center;"><input id="o_qk_pwd" type="password" style="text-align: center;" value="" maxlength="6"></th>
+                                </tr>
+                                <tr>
+                                    <th class="f_tt"  style="text-align:center;">新的安全鎖</th>
+                                    <th style="text-align:center;"><input id="qk_pwd" type="password" style="text-align: center;" value="" maxlength="6"></th>
+                                </tr>
+                                <tr>
+                                    <th class="f_tt"  style="text-align:center;">確認新的安全鎖</th>
+                                    <th style="text-align:center;"><input id="check_qk_pwd" type="password" style="text-align: center;" value="" maxlength="6"></th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2"><span style="color: red;">*</span><span>安全鎖為6位數的英文和數字</span></th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="edit" onclick="update_qk();">確定
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div> 
+    </body>
+    <script>
+        layui.use(['laydate','form'], function(){
+            var laydate = layui.laydate;
+            var  form = layui.form;
+
+            // 监听全选
+            form.on('checkbox(checkall)', function(data){
+
+                if(data.elem.checked){
+                    $('tbody input').prop('checked',true);
+                }else{
+                    $('tbody input').prop('checked',false);
+                }
+                form.render('checkbox');
+            });
+        });
+
+        function update_login(){
+            var o_password = $('#o_password').val();
+            var password = $('#password').val();
+            var check_password = $('#check_password').val();
+
+            if(o_password.length == 0) {
+                alert("舊的登入密碼不能為空");
+                return false;
+            }else if(password.length == 0) {
+                alert("新的登入密碼不能為空");
+                return false;
+            }else if(check_password.length == 0) {
+                alert("確認新的登入密碼不能為空");
+                return false;
+            }else if(password != check_password) {
+                alert("確認新的登入密碼 錯誤！");
+                return false;
+            };
+            var data = {o_password:o_password,password:password,type:1};
+
+            $.ajax({
+                type:"POST",
+                url:"{:url('index/post_psw')}",
+                data:data,
+                dataType:"json",
+                success:function(data) {
+                    if(data.type == 1){
+                        alert(data.data);
+                        window.location.href="{:url('index/index/userinfo')}?i=";
+                    }else{
+                        alert(data.data);
+                    };
+                },error:function(jqXHR) {
+                    alert("修改失敗，請聯繫客服");
+                },
+
+            });
+        }
+
+        function update_qk(){
+            var qk_pwd = $('#qk_pwd').val();
+            var check_qk_pwd = $('#check_qk_pwd').val();
+            var o_qk_pwd = $('#o_qk_pwd').val();
+
+            if(o_qk_pwd.length == 0) {
+                alert("舊的安全鎖不能為空");
+                return false;
+            }else if(qk_pwd.length == 0) {
+                alert("新的安全鎖不能為空");
+                return false;
+            }else if(qk_pwd.length != 6) {
+                alert("請輸入新的安全鎖6位數的英文和數字");
+                return false;
+            }else if(check_qk_pwd.length == 0) {
+                alert("確認新的安全鎖不能為空");
+                return false;
+            }else if(qk_pwd != check_qk_pwd) {
+                alert("確認新的安全鎖輸入錯誤！");
+                return false;
+            };
+            var data = {qk_pwd:qk_pwd,o_qk_pwd:o_qk_pwd,type:2};
+
+            $.ajax({
+                type:"POST",
+                url:"{:url('index/post_psw')}",
+                data:data,
+                dataType:"json",
+                success:function(data) {
+                    if(data.type == 1){
+                        alert(data.data);
+                        window.location.href="{:url('index/index/userinfo')}?i=";
+                    }else{
+                        alert(data.data);
+                    };
+                },error:function(jqXHR) {
+                    alert("修改失敗，請聯繫客服");
+                },
+
+            });
+        }
+
+    </script>
+</html>

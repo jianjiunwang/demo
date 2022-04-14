@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+    <head>
+        <link rel="stylesheet" href="/css/xadmin.css">
+        <script src="/static/layui/layui.js" charset="utf-8"></script>
+        <script src="//cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+        <script src="//cdn.staticfile.org/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    </head>
+    <style>
+        .nocansee{
+            display: none;
+        }
+        .recss{
+            display: block;
+            text-align: center; 
+            background-color:#eee;
+            color: black;
+            width: 25%;
+            border-radius:10px;
+            border:2px #ccc solid;
+            float: right;
+        }
+    </style>
+    <body>
+        <div class="x-nav">
+            <span class="layui-breadcrumb">
+                <a><cite>VIP入金</cite></a>
+            </span>
+        </div>
+        <div id="chm" class="layui-fluid">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                        <div class="layui-card-body layui-table-body layui-table-main">
+                            <div>
+                                <a class="recss" href="{:url('index/index/rd_record?s=r')}?i=">存款記錄</a>
+                            </div>
+                            <table class="layui-table layui-form">
+                                <tr>
+                                    <th style="text-align:right; width: 50%;">付款方式</th>
+                                    <th style="text-align:left;"><input value="VIP入金" readonly></th>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:right;">入金帳號</th>
+                                    <th style="text-align:left;"><textarea style="min-height: 75px; height: 75px;" disabled>請先輸入存款金額提交存款單後，聯繫線上客服獲取VIP充值方式</textarea></th>
+                                </tr>
+                                <tr>
+                                    <th style="text-align:right;">VIP儲值</th>
+                                    <th style="text-align:left;"><input id="amount"> 單筆限額(元):<spam style="color: tomato;">{$min}</spam>~1000000</th>
+                                </tr>
+                            </table>
+                        </div>
+                        <div style="text-align: center;">
+                            <button style="border: 1px solid #dcdfe6; color: white; background-color: #d18338; border-color: #d18338; width: 20%; height: 40px;" onclick="post_recharge();">下一步</button>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 style="color: rgb(36, 60, 194);">溫馨提示</h3>
+                        <div style="margin: 10px 0 10px 0;">
+                            <div style="color: rgb(17, 179, 243);">為確保您的款項及時到帳，請您留意以下內容：</div>
+                            <div style="color: rgb(17, 179, 243);">1. 在輸入您的入金金額時確保您提交的金額在限額範圍之內。</div>
+                            <div style="color: rgb(17, 179, 243);">2. 若不清楚操作步驟，可至幫助中心查詢相關問題</div>
+                        </div>
+                        
+                        <div style="color: rgb(17, 179, 243);">支付遇到困難？聯繫<a style="color: blue;" href="{$slink}">客服人員</a>獲得幫助</div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div id="hhm" class="nocansee">
+            <div style="text-align: center;">
+                <div style="color: rgb(0, 110, 255);">入金金額與您申請填寫的金額保持一致，否則系統無法查訊到帳。</div>
+                <div style="color: rgb(0, 110, 255);">入金遇到困難？請聯繫我們的<a style="color: blue;" href="{$slink}">線上客服</a></div>
+            </div>
+            <div class="layui-card-body layui-table-body layui-table-main">
+                <table class="layui-table layui-form">
+                    <tr>
+                        <th style="text-align:right; width: 50%; color: rgb(0, 110, 255);">訂單編號</th>
+                        <th style="text-align:left; color: rgb(0, 110, 255);"><div id="r_no"></div></th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right; color: rgb(0, 110, 255);">成單時間</th>
+                        <th style="text-align:left; color: rgb(0, 110, 255);"><div id="r_time"></div></th>
+                    </tr>
+                    <tr>
+                        <th style="text-align:right; color: rgb(0, 110, 255);">入金金額</th>
+                        <th style="text-align:left; color: rgb(0, 110, 255);"><div id="r_money"></div></th>
+                    </tr>
+                    <tr>
+                        <th colspan="2" style="text-align: center; background-color: rgb(185, 185, 185); color: white;">請聯繫<a style="color: rgb(250, 247, 75);" href="{$slink}">線上客服</a>核對到帳</th>
+                    </tr>
+                </table>
+            </div>
+            <button style="border: crimson; margin-right: 15px; float: right; color: crimson; background-color: white;" onclick="reload();">支付遇到問題，重新下單</button>
+        </div>
+    </body>
+    <script>
+        layui.use(['laydate','form'], function(){
+            var laydate = layui.laydate;
+            var  form = layui.form;
+
+            // 监听全选
+            form.on('checkbox(checkall)', function(data){
+
+                if(data.elem.checked){
+                    $('tbody input').prop('checked',true);
+                }else{
+                    $('tbody input').prop('checked',false);
+                }
+                form.render('checkbox');
+            }); 
+
+        });
+
+        function reload(){
+            window.location.reload();
+        };
+
+        function post_recharge(){
+            var amount = $('#amount').val();
+            
+            if(amount.length == 0){
+
+                alert("金額不得為空");
+                return false;
+            };
+
+            var data = { amount: amount};
+
+            $.ajax({  
+
+                url: "{:url('index/post_recharge')}",
+
+                type: 'POST',
+
+                data: data,
+
+                dataType: 'JSON',
+
+                success:function(data) {
+                    if(data.type == 1){
+                        $("#chm").addClass("nocansee");
+                        $("#hhm").removeClass("nocansee");
+                        $("#r_no").html(data.bill_no);
+                        $("#r_time").html(data.time);
+                        $("#r_money").html(data.money+" 元");
+
+                    }else if(data.type == 2){
+                        alert("請先填寫會員資料完整");
+                    }else if(data.type == 3){
+                        alert("存款金額須高於{$min}");
+                    }else{
+                        alert("送出存款申請失敗1");
+                    }
+                    
+
+                },error:function(jqXHR) {
+                    alert("送出存款申請失敗2");
+                },
+
+            });
+
+        };
+
+    </script>
+</html>

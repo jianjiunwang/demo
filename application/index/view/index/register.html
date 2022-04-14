@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <title>Bigbit</title>
+    <meta version="3">
+    <meta version="4">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="./files/jquery-ui.css">
+    <link rel="stylesheet" href="./files/sweetalert.min.css">
+    <link rel="stylesheet" href="./files/style.css">
+    <link href="css/jfcss/bootstrap.css" rel="stylesheet">
+    <link href="css/jfcss/font-awesome.css" rel="stylesheet" type="text/jfcss">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/jfcss/patros.css?v2">
+    <script src="./files/jquery.min.js"></script>
+    <script src="./files/jquery-ui.js"></script>
+    <script src="./files/popper.min.js"></script>
+    <script src="./files/bootstrap.min.js"></script>
+    <script src="./files/sweetalert.min.js"></script>
+    <script src="./files/jquery.qrcode.min.js"></script>
+    <script src="/static/layui/layui.js" charset="utf-8"></script>
+    <style>
+        
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            z-index: 999;
+        }
+
+        .template-4 {
+            padding: 0;
+        }
+
+        .cb-slideshow li div h3 {
+            font-size: 40px;
+            color: #13c2c2
+        }
+
+        .cb-slideshow h3,
+        .cb-slideshow h4 {
+            font-size: 20px;
+            color: #fff;
+        }
+
+        .navbar-inverse {
+            background: #fff;
+            border-bottom: 1px solid #13c2c2;
+        }
+
+        .navbar-inverse .navbar-toggle .icon-bar {
+            background-color: #000;
+        }
+
+        .navbar-inverse .navbar-toggle {
+            border-color: #fff;
+        }
+
+        .navbar-inverse .navbar-toggle:focus,
+        .navbar-inverse .navbar-toggle:hover {
+            background-color: #fff;
+        }
+
+        .navbar-inverse .navbar-nav>li>a,
+        .navbar-inverse .navbar-nav>.active>a {
+            color: #13c2c2;
+
+        }
+
+        .navbar-inverse .navbar-nav>.active>a,
+        .navbar-inverse .navbar-nav>.active>a:focus,
+        .navbar-inverse .navbar-nav>.active>a:hover,
+        .navbar-inverse .navbar-nav>li>a:hover {
+            color: #13c2c2;
+            opacity: 0.8;
+            background-color: transparent;
+            border-bottom: 3px solid #13c2c2;
+            margin-bottom: 0px;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            transition-timing-function: ease;
+        }
+
+        .navbar-brand img {
+            margin-top: 0px;
+            width: 179px;
+        }
+
+        .navbar-brand {
+            padding: 0 15px;
+            height: auto;
+        }
+
+        .color1 {
+            background-color: #13c2c2;
+        }
+
+        #about {
+            padding: 80px 0px 70px 0px;
+            background: #fff;
+            color: #13c2c2;
+        }
+
+        #about p {
+            color: #000;
+        }
+
+        .MainToken__Table_33Yi- th {
+            height: 54px;
+            text-align: left;
+            font-weight: 400;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .MainToken__Table_33Yi- td:first-child img {
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            margin-right: 16px;
+            vertical-align: top;
+            background-color: #fafafa;
+        }
+
+        .MainToken__Table--miniShow_RVQqE {
+            display: none;
+        }
+
+        .MainToken__Table_33Yi- td {
+            height: 64px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #fafafa;
+        }
+
+        .MainToken__Table_33Yi- td:first-child {
+            padding-left: 16px;
+        }
+
+        .MainToken__Table--t1_z1WVM {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .MainToken__Table--t2_13EXQ {
+            display: inline-block;
+            margin-top: 6px;
+            font-size: 14px;
+            color: #808799;
+            margin-left: 10px;
+        }
+
+        .MainToken__Table_33Yi- td {
+            height: 64px;
+            box-sizing: border-box;
+            border-bottom: 1px solid #fafafa;
+        }
+
+        .MainToken__Table--black_1C3bl {
+            color: #000;
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .MainToken__green_1ZFqD {
+            color: #44bd22;
+        }
+
+        .MainToken__Trend_3MVPt {
+            width: 80px;
+            height: 60px;
+        }
+
+        .MainToken__Table_33Yi- td:last-child {
+            text-align: left;
+            width: 140px;
+        }
+
+        .MainToken__Link_3j9sR {
+            display: inline-block;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            color: #13c2c2;
+            text-align: center;
+            background-color: rgba(19, 194, 194, .1);
+            border-radius: 2px;
+            font-weight: 500;
+            transition: all .2s ease;
+        }
+
+        .MainToken__MarkLink_2wmaG {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .MainToken__MarkLink_2wmaG a {
+            color: #13c2c2;
+            font-size: 16px;
+        }
+
+        .template-4 .input-cont-box,
+        .template-4 .index-page-btn,
+        .template-4 .auth-cont-form {
+            width: 100%;
+            background-color: #fff;
+            border-radius: 0px;
+            box-shadow: 0 4px 24px 0 rgb(0 0 0 / 10%);
+            border-radius: 0px;
+            padding: 10px;
+            max-width: 530px;
+            margin-bottom: 30px;
+
+        }
+
+        .template-4 .input-form-row>span {
+            background-color: #fff;
+            border-radius: 0px;
+            width: 30% !important;
+            display: block;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            color: #000;
+            border-bottom: 0px solid #555;
+        }
+
+        @media screen and (max-width: 768px) {
+            .template-4 .input-form-row {
+                width: 90%;
+                font-size: 15px;
+                margin: 10px auto;
+            }
+        }
+
+        .template-4 input,
+        .template-4 select,
+        .template-4 textarea {
+            background-color: #f5f5f5;
+            border-radius: 0px;
+            width: calc(70% - 20px);
+            border: none;
+            line-height: 30px;
+            height: 45px;
+            margin: 5px auto;
+            outline: 0;
+            padding: 0 15px;
+            color: #333;
+        }
+
+        .template-4 .main-btn {
+            margin: 0 auto;
+        }
+
+        .template-4 .main-btn {
+            background-color: #13c2c2;
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .MainToken__Table--miniHide_2-85t,
+            .MainToken__Table_33Yi- td:nth-child(4),
+            .MainToken__Table_33Yi- th:nth-child(4) {
+                display: none;
+            }
+
+            .MainToken__Table--miniShow_RVQqE {
+                display: block;
+            }
+
+            .MainToken__Table--miniHide_2-85t,
+            .MainToken__Table_33Yi- td:nth-child(4),
+            .MainToken__Table_33Yi- th:nth-child(4) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">切換導航</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><img src="img/img/fortunevc.svg" alt="company logo"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right custom-menu">
+                    <li class=""><a href="https://bigbit169.top/">首頁</a></li>
+
+
+                    <li class="active"><a href="register">立刻加入</a></li>
+                    <li><a href="login">登入</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="page">
+        <main>
+            <div class="full-page template-4">
+                <!--<form class="form">-->
+                    <div class="member-logo"></div>
+                    <div class="input-title" style="margin-top: 87px; border: none; background: darkcyan;">註冊</div>
+                    <div class="input-cont-box">
+                        <div class="input-form-row">
+                            <span>帳號</span>
+                            <input class="input-style" id="account" type="text" name="account"
+                                placeholder="帳號必須為至少六位數的英文和數字" maxlength="8" required>
+                        </div>
+                        <div class="input-form-row">
+                            <span>密碼</span>
+                            <input class="input-style" id="password" type="password" name="password"
+                                placeholder="密碼必須為至少六位數的英文和數字" required>
+                        </div>
+                        <div class="input-form-row">
+                            <span>確認密碼</span>
+                            <input class="input-style" id="password_confirm" type="password" name="password_confirm"
+                                placeholder="確認密碼" required>
+                        </div>
+                        <div class="input-form-row">
+                            <span>安全鎖</span>
+                            <input class="input-style" id="qk_pwd" type="password" name="qk_pwd" maxlength="6"
+                                placeholder="安全鎖為6位數的英文和數字" required>
+                        </div>
+                        <div class="input-form-row">
+                            <span>姓名</span>
+                            <input name="real_name" class="input-style" id="name" type="text" placeholder="請填寫 姓名"
+                                required>
+                        </div>
+                        <div class="input-form-row">
+                            <span>手機號碼</span>
+                            <input name="phone" class="input-style" id="phone" type="text" placeholder="請填寫 手機號碼"
+                                required>
+                        </div>
+                        <div class="input-form-row">
+                            <span style="background-color: #006bff94;"><a style="color: white; line-height: 45px;"
+                                    id="getcode" href="javascript:;" onclick="send(this);">取得驗證碼</a></span>
+                            <input name="phone_code" class="input-style" id="phone_code" type="text" maxlength="6"
+                                placeholder="請輸入簡訊收到的驗證碼共6位" required>
+                        </div>
+
+                        <label class="input-form-row policy-txt">
+                            <input class="submit-check" type="checkbox">
+                            我已年滿18歲，且已詳讀、接受並同意條款與規約、規則、隱私政策、Cookies政策以及年齡驗證的相關政策
+                            <a href="https://twc8.baohui9.com/policy" target="_blank"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                        </label>
+                        <div class="btn-Gp">
+                            <a class="second-btn main-btn" href="login">已有帳號，登入</a>
+                            <button class="main-btn" id="register" onclick="post_register()">送出</button>
+                        </div>
+                        <div class="info-classic"></div>
+
+                    </div>
+
+                <!--</form>-->
+            </div>
+
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script>
+
+                var countdown = 60;
+                function settime(obj) {
+                    if (countdown == 0) {
+                        $("#getcode").css("pointer-events", "auto");
+                        obj.text = "重發驗證碼";
+                        countdown = 60;
+                        return;
+                    } else {
+                        $("#getcode").css("pointer-events", "none");
+                        obj.text = "" + countdown + "";
+                        countdown--;
+                    }
+                    setTimeout(function () {
+                        settime(obj)
+                    }, 1000)
+                }
+                function send(obj) {
+                    var phone = { "phone": $('input[name=phone]').val() };
+                    if ($('input[name=phone]').val() == "") {
+                        alert("請填寫 手機號碼");
+                        $("input[name=phone]").focus();
+                    } else {
+                        settime(obj);
+                        $.ajax({
+                            type: "POST",
+                            url: "{:url('index/index/sendsms')}",
+                            data: phone,
+                            dataType: "json",
+                            // cache: false,
+                            // async: true,
+                            success: function (data) {
+                                alert(data.msg);
+                            }, error: function (jqXHR) {
+                                alert("取得驗證碼失敗，請聯繫客服");
+                            },
+                        });
+                    }
+                }
+
+                function post_register() {
+                    var account = $("#account").val();
+                    var pwd = $("#password").val();
+                    var pwd_con = $("#password_confirm").val();
+                    var name = $("#name").val();
+                    var phone = $("#phone").val();
+                    var qk_pwd = $("#qk_pwd").val();
+                    var phone_code = $("#phone_code").val();
+
+                    var reg1 = new RegExp(/^[0-9A-Za-z]+$/);
+                    var reg = new RegExp(/[A-Za-z].*[0-9]|[0-9].*[A-Za-z]/);
+
+                    if (account.length == 0) {
+                        swal('請輸入帳號');
+                        return false;
+                    } else if (account.length < 6) {
+                        swal('帳號長度須大於6個字元');
+                        return false;
+                    } else if (pwd.length == 0) {
+                        swal('請輸入密碼');
+                        return false;
+                    } else if (pwd.length < 6) {
+                        swal('密碼長度須大於等於6個字元');
+                        return false;
+                    } else if (pwd_con.length == 0) {
+                        swal('請輸入確認密碼');
+                        return false;
+                    } else if (pwd_con !== pwd) {
+                        swal('確認密碼輸入錯誤');
+                        return false;
+                    } else if (qk_pwd.length == 0) {
+                        swal('請輸入安全鎖');
+                        return false;
+                    } else if (name.length == 0) {
+                        swal('請輸入姓名');
+                        return false;
+                    } else if (phone.length == 0) {
+                        swal('請輸入手機號碼');
+                        return false;
+                    } else if (phone.length !== 10) {
+                        swal('請輸入正確的手機號碼');
+                        return false;
+                    } else if (phone_code.length == 0) {
+                        swal('請輸入手機驗證碼');
+                        return false;
+                    } else if (pwd == qk_pwd) {
+                        swal('安全鎖與登入密碼不可相同');
+                        return false;
+                    } else if (!reg1.test(account)) {
+                        swal('請輸入正確的帳號');
+                        return false;
+                    } else if (!reg1.test(pwd)) {
+                        swal('請輸入正確的密碼');
+                        return false;
+                    } else if (!reg1.test(qk_pwd)) {
+                        swal('請輸入正確的安全鎖');
+                        return false;
+                    } else if (!reg.test(account)) {
+                        swal('請輸入正確的帳號');
+                        return false;
+                    } else if (!reg.test(pwd)) {
+                        swal('請輸入正確的密碼');
+                        return false;
+                    } else if (!reg.test(qk_pwd)) {
+                        swal('請輸入正確的安全鎖');
+                        return false;
+                    }
+
+                    var locurl = "index0";
+                    var datas = { name: account, real_name: name, pwd: pwd, qk_pwd: qk_pwd, phone: phone, phone_code: phone_code };
+                    $.ajax({
+                        type: "POST",
+                        url: "{:url('index/index/post_register')}",
+                        data: datas,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.type == 1) {
+                                swal(data.data);
+                                if (locurl) {
+                                    window.location.href=locurl;
+                                    
+                                } else {
+                                    return true;
+                                }
+                            } else {
+                                swal(data.data);
+                            }
+                        },
+                        error: function (jqXHR) {
+                            swal("註冊失敗，請聯繫客服");
+                        },
+                    });
+                }
+            </script>
+            <script>
+                $(function () {
+                    $('.submit-check').on('click', function () {
+                        if (!$(this).prop('checked')) {
+                            swal('您必須同意使用條款')
+                        }
+                        $('.form .submit').prop('disabled', !$(this).prop('checked'));
+                    }).prop('checked', true);
+
+                    // $(document).ready(function(){
+                    //     $("#register").click(function(){
+
+                    //         swal('ok')
+                    //     });
+                    // });
+                });
+            </script>
+        </main>
+    </div>
+    <script>
+
+        $(function () {
+            $('.go-top').click(function (e) {
+                $('html, body').animate({
+                    scrollTop: 0
+                }, 900);
+            });
+
+            $(window).on("scroll", function () {
+                var topHeight = $(window).scrollTop();
+                if (topHeight > 0) {
+                    $("nav").addClass("nav-shrink");
+                } else {
+                    $("nav").removeClass("nav-shrink");
+                }
+            })
+
+            $('.nav-mobile').click(function () {
+                $('.nav-cont').stop(true).fadeIn(300);
+            });
+            $('.nav-close').click(function () {
+                $('.nav-cont').stop(true).fadeOut(300);
+            });
+
+            $(window).on('resize', function () {
+                var win = $(window).outerWidth();
+                if (win > 992) {
+                    $('.nav-cont').show();
+                } else {
+                    $('.nav-cont').hide();
+                }
+            });
+        });
+    </script>
+
+
+
+    <script>
+        function _gettext(str) {
+            var i18n = {
+                'Account is logged in somewhere else': '帳號已從別的位置登入',
+                'Please login first': '請先登入',
+                'Error': '錯誤',
+            };
+
+            return i18n[str] || str;
+        }
+    </script>
+    <script src="js/jfjs/jquery_002.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/jfjs/bootstrap.js"></script>
+    <!-- Portfolio -->
+    <script src="js/jfjs/jquery.js"></script>
+    <!--Jquery Smooth Scrolling-->
+    <script>
+        $(document).ready(function () {
+            $('.custom-menu a[href^="#"], .intro-scroller .inner-link').on('click', function (e) {
+                e.preventDefault();
+
+                var target = this.hash;
+                var $target = $(target);
+
+                $('html, body').stop().animate({
+                    'scrollTop': $target.offset().top
+                }, 900, 'swing', function () {
+                    window.location.hash = target;
+                });
+            });
+
+            $('a.page-scroll').bind('click', function (event) {
+                var $anchor = $(this);
+                $('html, body').stop().animate({
+                    scrollTop: $($anchor.attr('href')).offset().top
+                }, 1500, 'easeInOutExpo');
+                event.preventDefault();
+            });
+
+            $(".nav a").on("click", function () {
+                $(".nav").find(".active").removeClass("active");
+                $(this).parent().addClass("active");
+            });
+
+            $('body').append('<div id="toTop" class="btn btn-primary color1"><span class="glyphicon glyphicon-chevron-up"></span></div>');
+            $(window).scroll(function () {
+                if ($(this).scrollTop() != 0) {
+                    $('#toTop').fadeIn();
+                } else {
+                    $('#toTop').fadeOut();
+                }
+            });
+            $('#toTop').click(function () {
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 700);
+                return false;
+            });
+
+        });
+    </script>
+    <script>
+        function gallery() { };
+
+        var $itemsHolder = $('ul.port2');
+        var $itemsClone = $itemsHolder.clone();
+        var $filterClass = "";
+        $('ul.filter li').click(function (e) {
+            e.preventDefault();
+            $filterClass = $(this).attr('data-value');
+            if ($filterClass == 'all') {
+                var $filters = $itemsClone.find('li');
+            } else {
+                var $filters = $itemsClone.find('li[data-type=' + $filterClass + ']');
+            }
+            $itemsHolder.quicksand(
+                $filters, {
+                duration: 1000
+            },
+                gallery
+            );
+        });
+
+        $(document).ready(gallery);
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            inicializemap()
+
+            $('#contactForm').on('submit', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+
+                // get values from FORM
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var message = $("#message").val();
+                var goodToGo = false;
+                var messgaeError = 'Request can not be send';
+                var pattern = new RegExp(/^(('[\w-\s]+')|([\w-]+(?:\.[\w-]+)*)|('[\w-\s]+')([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+
+
+                if (name && name.length > 0 && $.trim(name) != '' && message && message.length > 0 && $.trim(message) != '' && email && email.length > 0 && $.trim(email) != '') {
+                    if (pattern.test(email)) {
+                        goodToGo = true;
+                    } else {
+                        messgaeError = 'Please check your email address';
+                        goodToGo = false;
+                    }
+                } else {
+                    messgaeError = 'You must fill all the form fields to proceed!';
+                    goodToGo = false;
+                }
+
+
+                if (goodToGo) {
+                    $.ajax({
+                        data: $('#contactForm').serialize(),
+                        beforeSend: function () {
+                            $('#success').html('<div class="col-md-12 text-center"><img src="img/jfimg/spinner1.gif" alt="spinner" /></div>');
+                        },
+                        success: function (response) {
+                            if (response == 1) {
+                                $('#success').html('<div class="col-md-12 text-center">Your email was sent successfully</div>');
+                                window.location.reload();
+                            } else {
+                                $('#success').html('<div class="col-md-12 text-center">E-mail was not sent. Please try again!</div>');
+                            }
+                        },
+                        error: function (e) {
+                            $('#success').html('<div class="col-md-12 text-center">We could not fetch the data from the server. Please try again!</div>');
+                        },
+                        complete: function (done) {
+                            console.log('Finished');
+                        },
+                        type: 'POST',
+                        url: 'js/jfjs/send_email.php',
+                    });
+                    return true;
+                } else {
+                    $('#success').html('<div class="col-md-12 text-center">' + messgaeError + '</div>');
+                    return false;
+                }
+                return false;
+            });
+        });
+
+        var map = null;
+        var latitude;
+        var longitude;
+
+        function inicializemap() {
+            latitude = 41.3349509;
+            longitude = 19.8217028;
+
+            var egglabs = new google.maps.LatLng(latitude, longitude);
+            var egglabs1 = new google.maps.LatLng(43.0630171, 89.2296082);
+            var egglabs2 = new google.maps.LatLng(13.0630171, 80.2296082);
+
+
+            var image = new google.maps.MarkerImage('images/marker.png', new google.maps.Size(84, 56), new google.maps.Point(0, 0), new google.maps.Point(42, 56));
+            var mapCoordinates = new google.maps.LatLng(latitude, longitude);
+            var mapOptions = {
+                backgroundColor: '#ffffff',
+                zoom: 10,
+                disableDefaultUI: true,
+                center: mapCoordinates,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: true,
+                draggable: true,
+                zoomControl: false,
+                disableDoubleClickZoom: true,
+                mapTypeControl: false,
+                styles: [{
+                    "featureType": "all",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "color": "#1f242f"
+                    }]
+                }, {
+                    "featureType": "all",
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "hue": "#ff9d00"
+                    }]
+                }, {
+                    "featureType": "landscape.man_made",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#fef8ef"
+                    }]
+                }, {
+                    "featureType": "poi.medical",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "hue": "#ff0000"
+                    }]
+                }, {
+                    "featureType": "poi.park",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#c9d142"
+                    }, {
+                        "lightness": "0"
+                    }, {
+                        "visibility": "on"
+                    }, {
+                        "weight": "1"
+                    }, {
+                        "gamma": "1.98"
+                    }]
+                }, {
+                    "featureType": "road",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "weight": "1.00"
+                    }]
+                }, {
+                    "featureType": "road",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#d7b19c"
+                    }, {
+                        "weight": "1"
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "visibility": "on"
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "weight": "4.03"
+                    }]
+                }, {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{
+                        "visibility": "off"
+                    }, {
+                        "color": "#ffed00"
+                    }]
+                }, {
+                    "featureType": "road.highway.controlled_access",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "visibility": "on"
+                    }]
+                }, {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "visibility": "on"
+                    }]
+                }, {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "visibility": "on"
+                    }]
+                }, {
+                    "featureType": "transit.line",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#cbcbcb"
+                    }]
+                }, {
+                    "featureType": "water",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#0b727f"
+                    }]
+                }]
+            };
+
+            map = new google.maps.Map(document.getElementById('map-canvas-holder'), mapOptions);
+            marker = new google.maps.Marker({
+                position: egglabs,
+                raiseOnDrag: false,
+                icon: image,
+                map: map,
+                draggable: false,
+                title: 'ATIS1'
+            });
+            marker = new google.maps.Marker({
+                position: egglabs1,
+                raiseOnDrag: false,
+                icon: image,
+                map: map,
+                draggable: false,
+                title: 'ATIS2'
+            });
+            marker = new google.maps.Marker({
+                position: egglabs2,
+                raiseOnDrag: false,
+                icon: image,
+                map: map,
+                draggable: false,
+                title: 'ATIS3'
+            });
+            google.maps.event.addListener(map, 'zoom_changed', function () {
+                var center = map.getCenter();
+                google.maps.event.trigger(map, 'resize');
+                map.setCenter(center);
+            });
+        }
+    </script>
+</body>
+
+</html>
